@@ -8,18 +8,25 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
+    @IBOutlet weak var idNumberField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        idNumberField.setBottomBorder()
+        passwordField.setBottomBorder()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 
