@@ -23,10 +23,10 @@ class LoginViewController: UIViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func loginClick(sender: AnyObject) {
+        
+        print("Log In Clicked")
+        performSegueWithIdentifier("LogIn", sender: self)
     }
-
 }
 
