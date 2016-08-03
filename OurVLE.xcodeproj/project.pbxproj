@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		8A0DDA5A1D4D9F5E00ECDD76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DDA591D4D9F5E00ECDD76 /* AppDelegate.swift */; };
-		8A0DDA5C1D4D9F5E00ECDD76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DDA5B1D4D9F5E00ECDD76 /* ViewController.swift */; };
+		8A0DDA5C1D4D9F5E00ECDD76 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DDA5B1D4D9F5E00ECDD76 /* LoginViewController.swift */; };
 		8A0DDA5F1D4D9F5E00ECDD76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A0DDA5D1D4D9F5E00ECDD76 /* Main.storyboard */; };
 		8A0DDA621D4D9F5E00ECDD76 /* OurVLE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DDA601D4D9F5E00ECDD76 /* OurVLE.xcdatamodeld */; };
 		8A0DDA641D4D9F5E00ECDD76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A0DDA631D4D9F5E00ECDD76 /* Assets.xcassets */; };
 		8A0DDA671D4D9F5E00ECDD76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A0DDA651D4D9F5E00ECDD76 /* LaunchScreen.storyboard */; };
 		8A0DDA721D4D9F5E00ECDD76 /* OurVLETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DDA711D4D9F5E00ECDD76 /* OurVLETests.swift */; };
 		8A0DDA7D1D4D9F5E00ECDD76 /* OurVLEUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DDA7C1D4D9F5E00ECDD76 /* OurVLEUITests.swift */; };
+		8A2F61C11D52A4B400FDDD47 /* CourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F61C01D52A4B400FDDD47 /* CourseViewController.swift */; };
+		8A2F61C41D52A58B00FDDD47 /* ForumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F61C31D52A58B00FDDD47 /* ForumViewController.swift */; };
+		8A2F61C61D52A5AF00FDDD47 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F61C51D52A5AF00FDDD47 /* ProfileViewController.swift */; };
+		8AC09BF31D4DE44000C33585 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +41,7 @@
 /* Begin PBXFileReference section */
 		8A0DDA561D4D9F5E00ECDD76 /* OurVLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurVLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0DDA591D4D9F5E00ECDD76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8A0DDA5B1D4D9F5E00ECDD76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8A0DDA5B1D4D9F5E00ECDD76 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8A0DDA5E1D4D9F5E00ECDD76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8A0DDA611D4D9F5E00ECDD76 /* OurVLE.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OurVLE.xcdatamodel; sourceTree = "<group>"; };
 		8A0DDA631D4D9F5E00ECDD76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +53,10 @@
 		8A0DDA781D4D9F5E00ECDD76 /* OurVLEUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OurVLEUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0DDA7C1D4D9F5E00ECDD76 /* OurVLEUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurVLEUITests.swift; sourceTree = "<group>"; };
 		8A0DDA7E1D4D9F5E00ECDD76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A2F61C01D52A4B400FDDD47 /* CourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseViewController.swift; sourceTree = "<group>"; };
+		8A2F61C31D52A58B00FDDD47 /* ForumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumViewController.swift; sourceTree = "<group>"; };
+		8A2F61C51D52A5AF00FDDD47 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +107,14 @@
 		8A0DDA581D4D9F5E00ECDD76 /* OurVLE */ = {
 			isa = PBXGroup;
 			children = (
+				8A2F61C21D52A51F00FDDD47 /* ViewControllers */,
 				8A0DDA591D4D9F5E00ECDD76 /* AppDelegate.swift */,
-				8A0DDA5B1D4D9F5E00ECDD76 /* ViewController.swift */,
 				8A0DDA5D1D4D9F5E00ECDD76 /* Main.storyboard */,
 				8A0DDA631D4D9F5E00ECDD76 /* Assets.xcassets */,
 				8A0DDA651D4D9F5E00ECDD76 /* LaunchScreen.storyboard */,
 				8A0DDA681D4D9F5E00ECDD76 /* Info.plist */,
 				8A0DDA601D4D9F5E00ECDD76 /* OurVLE.xcdatamodeld */,
+				8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */,
 			);
 			path = OurVLE;
 			sourceTree = "<group>";
@@ -126,6 +135,17 @@
 				8A0DDA7E1D4D9F5E00ECDD76 /* Info.plist */,
 			);
 			path = OurVLEUITests;
+			sourceTree = "<group>";
+		};
+		8A2F61C21D52A51F00FDDD47 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8A0DDA5B1D4D9F5E00ECDD76 /* LoginViewController.swift */,
+				8A2F61C01D52A4B400FDDD47 /* CourseViewController.swift */,
+				8A2F61C31D52A58B00FDDD47 /* ForumViewController.swift */,
+				8A2F61C51D52A5AF00FDDD47 /* ProfileViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +280,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A0DDA621D4D9F5E00ECDD76 /* OurVLE.xcdatamodeld in Sources */,
-				8A0DDA5C1D4D9F5E00ECDD76 /* ViewController.swift in Sources */,
+				8AC09BF31D4DE44000C33585 /* UITextFieldExtension.swift in Sources */,
+				8A2F61C41D52A58B00FDDD47 /* ForumViewController.swift in Sources */,
+				8A0DDA5C1D4D9F5E00ECDD76 /* LoginViewController.swift in Sources */,
+				8A2F61C61D52A5AF00FDDD47 /* ProfileViewController.swift in Sources */,
+				8A2F61C11D52A4B400FDDD47 /* CourseViewController.swift in Sources */,
 				8A0DDA5A1D4D9F5E00ECDD76 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,6 +512,7 @@
 				8A0DDA831D4D9F5E00ECDD76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8A0DDA841D4D9F5E00ECDD76 /* Build configuration list for PBXNativeTarget "OurVLETests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +521,7 @@
 				8A0DDA861D4D9F5E00ECDD76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8A0DDA871D4D9F5E00ECDD76 /* Build configuration list for PBXNativeTarget "OurVLEUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +530,7 @@
 				8A0DDA891D4D9F5E00ECDD76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
