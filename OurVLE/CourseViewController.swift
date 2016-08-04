@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CourseViewController: UIViewController {
+class CourseViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
