@@ -1,0 +1,6 @@
+framework module Pods_OurVLEUITests {
+  umbrella header "Pods-OurVLEUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

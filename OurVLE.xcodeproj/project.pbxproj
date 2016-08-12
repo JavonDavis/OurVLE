@@ -25,6 +25,8 @@
 		8A2F61CF1D5305FE00FDDD47 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F61CE1D5305FE00FDDD47 /* ProfileTableViewCell.swift */; };
 		8A2F61D31D53123B00FDDD47 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F61D21D53123B00FDDD47 /* Models.swift */; };
 		8A81CDCE1D532D7300D358E1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8A81CDCD1D532D7300D358E1 /* Podfile */; };
+		8A9260961D5D304A007BBBFD /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9260951D5D304A007BBBFD /* HomeTabBarController.swift */; };
+		8A9260981D5D44C6007BBBFD /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9260971D5D44C6007BBBFD /* TestData.swift */; };
 		8AC09BF31D4DE44000C33585 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */; };
 		A03BA5CCB6109B9BC441AB5B /* Pods_OurVLE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FDE55762E4B092BB2444B9 /* Pods_OurVLE.framework */; };
 /* End PBXBuildFile section */
@@ -73,7 +75,9 @@
 		8A2F61CC1D5305E500FDDD47 /* ForumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumTableViewCell.swift; sourceTree = "<group>"; };
 		8A2F61CE1D5305FE00FDDD47 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		8A2F61D21D53123B00FDDD47 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		8A81CDCD1D532D7300D358E1 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		8A81CDCD1D532D7300D358E1 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8A9260951D5D304A007BBBFD /* HomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		8A9260971D5D44C6007BBBFD /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		94C44487E5DB1EBD42CCA5F6 /* Pods-OurVLE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurVLE.release.xcconfig"; path = "Pods/Target Support Files/Pods-OurVLE/Pods-OurVLE.release.xcconfig"; sourceTree = "<group>"; };
 		9DE1F035584812A900880F0C /* Pods-OurVLETests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurVLETests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OurVLETests/Pods-OurVLETests.release.xcconfig"; sourceTree = "<group>"; };
@@ -149,14 +153,16 @@
 				8A2F61CA1D52FFAE00FDDD47 /* Forums */,
 				8A2F61C91D52FFA400FDDD47 /* Courses */,
 				8A2F61C21D52A51F00FDDD47 /* Login */,
+				8A2F61D21D53123B00FDDD47 /* Models.swift */,
+				8A9260951D5D304A007BBBFD /* HomeTabBarController.swift */,
 				8A0DDA591D4D9F5E00ECDD76 /* AppDelegate.swift */,
+				8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */,
 				8A0DDA5D1D4D9F5E00ECDD76 /* Main.storyboard */,
 				8A0DDA631D4D9F5E00ECDD76 /* Assets.xcassets */,
 				8A0DDA651D4D9F5E00ECDD76 /* LaunchScreen.storyboard */,
 				8A0DDA681D4D9F5E00ECDD76 /* Info.plist */,
 				8A0DDA601D4D9F5E00ECDD76 /* OurVLE.xcdatamodeld */,
-				8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */,
-				8A2F61D21D53123B00FDDD47 /* Models.swift */,
+				8A9260971D5D44C6007BBBFD /* TestData.swift */,
 			);
 			path = OurVLE;
 			sourceTree = "<group>";
@@ -492,7 +498,9 @@
 			files = (
 				8A2F61D31D53123B00FDDD47 /* Models.swift in Sources */,
 				8A2F61CD1D5305E500FDDD47 /* ForumTableViewCell.swift in Sources */,
+				8A9260961D5D304A007BBBFD /* HomeTabBarController.swift in Sources */,
 				8A2F61C81D52FF4500FDDD47 /* CourseTableViewCell.swift in Sources */,
+				8A9260981D5D44C6007BBBFD /* TestData.swift in Sources */,
 				8A0DDA621D4D9F5E00ECDD76 /* OurVLE.xcdatamodeld in Sources */,
 				8A2F61CF1D5305FE00FDDD47 /* ProfileTableViewCell.swift in Sources */,
 				8AC09BF31D4DE44000C33585 /* UITextFieldExtension.swift in Sources */,
@@ -576,6 +584,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -622,6 +631,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

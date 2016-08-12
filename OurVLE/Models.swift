@@ -7,8 +7,8 @@
 //
 
 import Foundation
-
-// Using Structs since values will never be modified and not expected to be copied
+import ObjectMapper
+// Would use structs instead of class but data needs to be persisted as NSData
 
 
 // MARK: Moodle API Constants
@@ -16,6 +16,13 @@ let SERVICE_MOODLE_MOBILE = "moodle_mobile_app"
 let API_HOST = "http://ourvle.mona.uwi.edu/"
 let RESPONSE_FORMAT = "json"
 let LOGIN_URL = API_HOST + "login/token.php"
+let WEB_SERVICE = "/webservice/rest/server.php"
+
+let PARAM_USERNAME = "username"
+let PARAM_PASSWORD = "password"
+let PARAM_TOKEN = "wstoken"
+let PARAM_FUNCTION = "wsfunction"
+let PARAM_FORMAT = "moodlewsrestformat"
 
 
 // MARK: Moodle Functions
@@ -29,31 +36,145 @@ let FUNCTION_GET_USERS_FROM_COURSE = "moodle_user_get_users_by_courseid"
 
 
 // MARK: SiteInfo
-struct SiteInfo {
-    var sitename: String?
-    var username: String?
-    var firstname: String?
-    var lastname: String?
-    var fullname: String?
-    var siteurl: String?
-    var userpictureurl: String?
-    var token: String?
+class SiteInfo: NSObject, NSCoding, Mappable {
+    var sitename: String!
+    var username: String!
+    var firstname: String!
+    var lastname: String!
+    var fullname: String!
+    var siteurl: String!
+    var userpictureurl: String!
+    var token: String!
     
-    var userid: Int?
+    var userid: Int!
+    
+    convenience override init() {
+        self.init()
+    }
+    
+    required init?(_ map: Map){
+        
+    }
+    
+    func mapping(map: Map) {
+        sitename <- map["sitename"]
+        username <- map["username"]
+        firstname <- map["firstname"]
+        lastname <- map["lastname"]
+        fullname <- map["fullname"]
+        siteurl <- map["siteurl"]
+        userpictureurl <- map["userpictureurl"]
+        token <- map["token"]
+        userid <- map["userid"]
+    }
+    
+    required convenience init(coder decoder: NSCoder) {
+        self.init()
+        
+        self.sitename = decoder.decodeObjectForKey("sitename") as! String
+        self.username = decoder.decodeObjectForKey("username") as! String
+        self.firstname = decoder.decodeObjectForKey("firstname") as! String
+        self.lastname = decoder.decodeObjectForKey("lastname") as! String
+        self.fullname = decoder.decodeObjectForKey("fullname") as! String
+        self.siteurl = decoder.decodeObjectForKey("siteurl") as! String
+        self.userpictureurl = decoder.decodeObjectForKey("userpictureurl") as! String
+        self.token = decoder.decodeObjectForKey("token") as! String
+        self.userid = decoder.decodeObjectForKey("userid") as! Int
+        
+    }
+    
+    func encodeWithCoder(coder: NSCoder) {
+        if let sitename = sitename { coder.encodeObject(sitename, forKey: "sitename") }
+        if let username = username { coder.encodeObject(username, forKey: "username") }
+        if let firstname = firstname { coder.encodeObject(firstname, forKey: "firstname") }
+        if let lastname = lastname { coder.encodeObject(lastname, forKey: "lastname") }
+        if let fullname = fullname { coder.encodeObject(fullname, forKey: "fullname") }
+        if let siteurl = siteurl { coder.encodeObject(siteurl, forKey: "siteurl") }
+        if let userpictureurl = userpictureurl { coder.encodeObject(userpictureurl, forKey: "userpictureurl") }
+        if let token = token { coder.encodeObject(token, forKey: "token") }
+        if let userid = userid { coder.encodeObject(userid, forKey: "userid") }
+        
+    }
 }
 
-// MARK: Token
-struct Token {
-    var token: String?
+class Token: NSObject, NSCoding, Mappable {
+    var token: String!
+    var error: String!
+    
+    required convenience init(coder decoder: NSCoder) {
+        self.init()
+        
+        self.token = decoder.decodeObjectForKey("token") as! String
+        self.error = decoder.decodeObjectForKey("error") as! String
+        
+    }
+    
+    convenience override init() {
+        self.init()
+    }
+    
+    required init?(_ map: Map){
+        
+    }
+    
+    func mapping(map: Map) {
+        token <- map["token"]
+        error <- map["error"]
+    }
+    
+    func encodeWithCoder(coder: NSCoder) {
+        if let token = token { coder.encodeObject(token, forKey: "token") }
+        if let error = error { coder.encodeObject(error, forKey: "error") }
+        
+    }
 }
 
 // MARK: Course
-struct Course {
+class Course: NSObject, NSCoding, Mappable {
     // Fields
     
-    var id: Int?
+    var id: Int!
     
-    var shortname: String?
-    var fullname: String?
-    var summary: String?
+    var shortname: String!
+    var fullname: String!
+    var summary: String!
+    
+    convenience override init() {
+        self.init()
+    }
+    
+    required init?(_ map: Map){
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        shortname <- map["shortname"]
+        fullname <- map["fullname"]
+        summary <- map["summary"]
+    }
+    
+    required convenience init(coder decoder: NSCoder) {
+        self.init()
+        
+        self.shortname = decoder.decodeObjectForKey("shortname") as! String
+        self.fullname = decoder.decodeObjectForKey("fullname") as! String
+        self.summary = decoder.decodeObjectForKey("summary") as! String
+        
+        self.id = decoder.decodeObjectForKey("id") as! Int
+        
+    }
+    
+    func encodeWithCoder(coder: NSCoder) {
+        if let shortname = shortname { coder.encodeObject(shortname, forKey: "shortname") }
+        if let fullname = fullname { coder.encodeObject(fullname, forKey: "fullname") }
+        if let summary = summary { coder.encodeObject(summary, forKey: "summary") }
+        
+        if let id = id { coder.encodeObject(id, forKey: "id") }
+        
+    }
+}
+
+class Forum {
+    
 }

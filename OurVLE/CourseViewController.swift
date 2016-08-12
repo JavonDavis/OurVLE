@@ -11,7 +11,12 @@ import UIKit
 
 class CourseViewController: UITableViewController {
     
+    var courses = [Course]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        courses.removeAll()
+        courses.appendContentsOf(getTestCourses())
     }
+    
 }

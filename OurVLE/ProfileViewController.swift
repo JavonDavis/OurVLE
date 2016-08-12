@@ -11,6 +11,9 @@ import UIKit
 
 class ProfileViewController: UITableViewController {
     
+    var profile:SiteInfo = SiteInfo()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

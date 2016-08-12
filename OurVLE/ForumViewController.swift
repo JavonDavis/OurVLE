@@ -11,6 +11,8 @@ import UIKit
 
 class ForumViewController: UITableViewController {
     
+    var forums: [Forum] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

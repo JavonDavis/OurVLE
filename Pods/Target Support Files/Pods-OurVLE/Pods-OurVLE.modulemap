@@ -1,0 +1,6 @@
+framework module Pods_OurVLE {
+  umbrella header "Pods-OurVLE-umbrella.h"
+
+  export *
+  module * { export * }
+}

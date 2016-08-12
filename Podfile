@@ -5,11 +5,7 @@ target 'OurVLE' do
   use_frameworks!
 
   # Pods for OurVLE
-  pod 'Alamofire'
-
-  target 'OurVLEPlayground' do
-    pod 'Alamofire'
-  end
+  pod 'AlamofireObjectMapper'
 
   target 'OurVLETests' do
     inherit! :search_paths
