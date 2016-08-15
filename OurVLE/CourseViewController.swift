@@ -12,6 +12,7 @@ import UIKit
 class CourseViewController: UITableViewController {
     
     var courses = [Course]()
+    var selectedCourse:Course!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,23 @@ class CourseViewController: UITableViewController {
         cell.courseTitleLabel.text = course.shortname + " - " + course.fullname
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        selectedCourse = courses[indexPath.row]
+        
+        performSegueWithIdentifier("Course", sender: self)
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "Course")
+        {
+            let vc = segue.destinationViewController as! CourseTabBarController
+            vc.course = selectedCourse
+        }
     }
     
     func loadSampleCourses()

@@ -221,3 +221,45 @@ class Forum: NSObject, NSCoding, Mappable {
         
     }
 }
+
+class CourseSection: NSObject, NSCoding, Mappable {
+    
+    var id: Int!
+    
+    var name: String!
+    var summary:String!
+    
+    override init() {
+        // initialise vars
+    }
+    
+    required init?(_ map: Map){
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        
+        name <- map["name"]
+        summary <- map["summary"]
+    }
+    
+    required convenience init(coder decoder: NSCoder) {
+        self.init()
+        
+        self.name = decoder.decodeObjectForKey("name") as! String
+        self.summary = decoder.decodeObjectForKey("summary") as! String
+        
+        self.id = decoder.decodeObjectForKey("id") as! Int
+        
+    }
+    
+    func encodeWithCoder(coder: NSCoder) {
+        if let name = name { coder.encodeObject(name, forKey: "fullname") }
+        if let summary = summary { coder.encodeObject(summary, forKey: "summary") }
+        
+        if let id = id { coder.encodeObject(id, forKey: "id") }
+        
+    }
+    
+}
