@@ -16,8 +16,6 @@ class CourseViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSampleCourses()
-        
-        
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

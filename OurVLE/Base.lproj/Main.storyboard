@@ -86,12 +86,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-591" y="465"/>
+            <point key="canvasLocation" x="-551" y="465"/>
         </scene>
-        <!--Home Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="MuH-zf-Miu">
             <objects>
-                <tabBarController id="fHz-M8-Fj4" customClass="HomeTabBarController" customModule="OurVLE" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="fHz-M8-Fj4" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Gyz-KI-2g5">
                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="KiT-dg-RY2" userLabel="Log Out"/>
                     </navigationItem>
@@ -149,11 +149,11 @@
                             <outlet property="delegate" destination="jyh-Pa-RiG" id="auE-MK-66Z"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Courses" id="Yvs-JB-5q9"/>
+                    <tabBarItem key="tabBarItem" title="Courses" image="courseTabIcon" id="Yvs-JB-5q9"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7dH-jg-rjM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1099" y="408"/>
+            <point key="canvasLocation" x="1099" y="-272"/>
         </scene>
         <!--Forums-->
         <scene sceneID="aTz-gr-19q">
@@ -168,22 +168,34 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G1f-O8-PTa" id="Wpu-se-Aue">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forum Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgs-3h-eml">
-                                            <rect key="frame" x="257" y="35" width="87" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forum Intro" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2D-Vt-uCx">
+                                            <rect key="frame" x="8" y="45" width="584" height="29"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Forum Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgs-3h-eml">
+                                            <rect key="frame" x="8" y="16" width="584" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Wgs-3h-eml" firstAttribute="centerY" secondItem="Wpu-se-Aue" secondAttribute="centerY" id="HgW-XD-Nkc"/>
-                                        <constraint firstItem="Wgs-3h-eml" firstAttribute="centerX" secondItem="Wpu-se-Aue" secondAttribute="centerX" id="xnE-D8-06w"/>
+                                        <constraint firstItem="d2D-Vt-uCx" firstAttribute="top" secondItem="Wgs-3h-eml" secondAttribute="bottom" constant="8" id="Qab-dS-A2e"/>
+                                        <constraint firstItem="Wgs-3h-eml" firstAttribute="top" secondItem="Wpu-se-Aue" secondAttribute="topMargin" constant="8" id="U7p-hX-w3i"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="d2D-Vt-uCx" secondAttribute="leading" id="ZBP-ig-YUC"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Wgs-3h-eml" secondAttribute="trailing" id="bcy-yC-0XH"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="Wgs-3h-eml" secondAttribute="leading" id="e8Y-A6-Nim"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="d2D-Vt-uCx" secondAttribute="trailing" id="mnD-qA-wvJ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="d2D-Vt-uCx" secondAttribute="bottom" constant="8" id="sSO-aD-QA4"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="forumIntroLabel" destination="d2D-Vt-uCx" id="LEd-te-7PZ"/>
                                     <outlet property="forumTitleLabel" destination="Wgs-3h-eml" id="0Y0-62-2Sr"/>
                                 </connections>
                             </tableViewCell>
@@ -193,11 +205,11 @@
                             <outlet property="delegate" destination="LPM-1Q-3bU" id="eZH-kQ-qO1"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Forums" id="JXn-jJ-flu"/>
+                    <tabBarItem key="tabBarItem" title="Forums" image="forumTabIcon" id="JXn-jJ-flu"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUz-k5-vfl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1091" y="1051"/>
+            <point key="canvasLocation" x="1099" y="381"/>
         </scene>
         <!--Profile-->
         <scene sceneID="58e-Lu-ul4">
@@ -216,14 +228,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8f3-O8-Gv5">
-                                            <rect key="frame" x="257" y="34" width="87" height="21"/>
+                                            <rect key="frame" x="8" y="34" width="584" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="8f3-O8-Gv5" firstAttribute="centerX" secondItem="FDu-dT-yiN" secondAttribute="centerX" id="GSP-iF-NR1"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="8f3-O8-Gv5" secondAttribute="trailing" id="Jbq-7E-CBE"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="8f3-O8-Gv5" secondAttribute="leading" id="bM0-rr-QKb"/>
                                         <constraint firstItem="8f3-O8-Gv5" firstAttribute="centerY" secondItem="FDu-dT-yiN" secondAttribute="centerY" id="xpB-Kq-KYi"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -237,11 +250,14 @@
                             <outlet property="delegate" destination="Hjc-Bs-eCQ" id="ZiU-xC-zWZ"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Profile" id="ZEJ-kW-Edb"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profileTabIcon" id="ZEJ-kW-Edb"/>
+                    <connections>
+                        <segue destination="Uww-VV-2ZU" kind="show" identifier="LogOut" id="Srh-xc-TSC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDB-KU-t37" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1099" y="-264"/>
+            <point key="canvasLocation" x="-1270" y="1338"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QPK-NI-RnI">
@@ -259,10 +275,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsu-OE-SCV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1377" y="465"/>
+            <point key="canvasLocation" x="-1289" y="465"/>
         </scene>
     </scenes>
     <resources>
         <image name="LoginBackground" width="923" height="1646"/>
+        <image name="courseTabIcon" width="30" height="30"/>
+        <image name="forumTabIcon" width="30" height="30"/>
+        <image name="profileTabIcon" width="30" height="30"/>
     </resources>
 </document>

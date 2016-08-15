@@ -14,6 +14,7 @@ class ForumTableViewCell: UITableViewCell {
     // MARK: Properties
     
     @IBOutlet weak var forumTitleLabel: UILabel!
+    @IBOutlet weak var forumIntroLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

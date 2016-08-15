@@ -150,6 +150,7 @@ class Course: NSObject, NSCoding, Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
+        
         shortname <- map["shortname"]
         fullname <- map["fullname"]
         summary <- map["summary"]
@@ -176,6 +177,47 @@ class Course: NSObject, NSCoding, Mappable {
     }
 }
 
-class Forum {
+class Forum: NSObject, NSCoding, Mappable {
     
+    var id: Int!
+    
+    var course: String!
+    var name: String!
+    var intro: String!
+    
+    override init() {
+        // initialise vars here
+    }
+    
+    required init?(_ map: Map){
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        
+        course <- map["course"]
+        name <- map["name"]
+        intro <- map["intro"]
+    }
+    
+    required convenience init(coder decoder: NSCoder) {
+        self.init()
+        
+        self.course = decoder.decodeObjectForKey("course") as! String
+        self.name = decoder.decodeObjectForKey("name") as! String
+        self.intro = decoder.decodeObjectForKey("intro") as! String
+        
+        self.id = decoder.decodeObjectForKey("id") as! Int
+        
+    }
+    
+    func encodeWithCoder(coder: NSCoder) {
+        if let course = course { coder.encodeObject(course, forKey: "course") }
+        if let name = name { coder.encodeObject(name, forKey: "fullname") }
+        if let intro = intro { coder.encodeObject(intro, forKey: "intro") }
+        
+        if let id = id { coder.encodeObject(id, forKey: "id") }
+        
+    }
 }
