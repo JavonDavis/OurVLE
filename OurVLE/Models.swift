@@ -48,8 +48,9 @@ class SiteInfo: NSObject, NSCoding, Mappable {
     
     var userid: Int!
     
-    convenience override init() {
-        self.init()
+    override init()
+    {
+        // initialise vars here
     }
     
     required init?(_ map: Map){
@@ -139,8 +140,8 @@ class Course: NSObject, NSCoding, Mappable {
     var fullname: String!
     var summary: String!
     
-    convenience override init() {
-        self.init()
+    override init() {
+       // initialise vars here
     }
     
     required init?(_ map: Map){
