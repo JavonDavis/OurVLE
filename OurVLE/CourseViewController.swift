@@ -15,8 +15,64 @@ class CourseViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        courses.removeAll()
-        courses.appendContentsOf(getTestCourses())
+        loadSampleCourses()
+        
+        
     }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
+        // Could section it by what group the user is in for a specific course
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return courses.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        let cellIdentifier = "CourseTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! CourseTableViewCell
+        
+        let course = courses[indexPath.row]
+        
+        cell.courseTitleLabel.text = course.shortname
+        
+        return cell
+    }
+    
+    func loadSampleCourses()
+    {
+        let course = Course()
+        course.shortname = "MATH1141"
+        course.id = 1
+        course.fullname = "Introduction to Linear Algebra"
+        course.summary = "Course will introduce you to the fundamentals of linear algebra"
+        
+        let course1 = Course()
+        course1.shortname = "MATH1142"
+        course1.id = 2
+        course1.fullname = "Calculus I"
+        course1.summary = "Course will introduce you to the fundamentals of Calculus I"
+        
+        let course2 = Course()
+        course2.shortname = "MATH1151"
+        course2.id = 3
+        course2.fullname = "Formal Mathematics"
+        course2.summary = "Course will introduce you to the fundamentals of Formal Mathematics"
+        
+        let course3 = Course()
+        course3.shortname = "MATH1152"
+        course3.id = 4
+        course3.fullname = "Calculus II"
+        course3.summary = "Course will introduce you to the fundamentals of Calculus II"
+        
+        let course4 = Course()
+        course4.shortname = "COMP1161"
+        course4.id = 5
+        course4.fullname = "Introduction to object Oriented Programming"
+        course4.summary = "Course will introduce you to the fundamentals of Object oriented Programming"
+      
+        courses += [course,course1,course2,course3,course4]
+    }
 }

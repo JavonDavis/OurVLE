@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--OurVLE-->
+        <!--OurVLE Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="OurVLE" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,12 +24,12 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID Number" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="exU-bM-twe">
                                 <rect key="frame" x="30" y="289" width="540" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VtV-ZO-Pwq">
                                 <rect key="frame" x="30" y="326" width="540" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <constraints>
@@ -46,7 +46,7 @@
                             <constraint firstItem="JcI-fy-IoU" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="yyC-LK-r7N"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="OurVLE" id="4AE-gm-y4P">
+                    <navigationItem key="navigationItem" title="OurVLE Login" id="4AE-gm-y4P">
                         <barButtonItem key="rightBarButtonItem" title="Log In" id="f0Q-Q3-uyu">
                             <connections>
                                 <action selector="loginClick:" destination="BYZ-38-t0r" id="bsr-BI-Trk"/>
@@ -107,14 +107,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5em-2v-N2k" userLabel="CourseLabel">
-                                            <rect key="frame" x="254" y="35" width="93" height="21"/>
+                                            <rect key="frame" x="8" y="34" width="93" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="5em-2v-N2k" firstAttribute="centerX" secondItem="q8X-ph-0Db" secondAttribute="centerX" id="0La-pF-vfh"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="5em-2v-N2k" secondAttribute="leading" id="KIs-Vn-EFq"/>
                                         <constraint firstItem="5em-2v-N2k" firstAttribute="centerY" secondItem="q8X-ph-0Db" secondAttribute="centerY" id="gLz-hx-KdF"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -147,7 +147,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G1f-O8-PTa" id="Wpu-se-Aue">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forum Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgs-3h-eml">
@@ -191,7 +191,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fq3-VS-hE7" id="FDu-dT-yiN">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8f3-O8-Gv5">
@@ -225,7 +225,6 @@
         <!--Navigation Controller-->
         <scene sceneID="7ai-ax-SYh">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C8N-dW-sUp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="hNX-xl-Zoj" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MKc-MA-R9i">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -235,6 +234,7 @@
                         <segue destination="fHz-M8-Fj4" kind="relationship" relationship="rootViewController" id="3UM-0U-gnw"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C8N-dW-sUp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="205" y="523"/>
         </scene>
