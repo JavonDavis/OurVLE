@@ -27,5 +27,10 @@ class LoginViewController: UIViewController {
         print("Log In Clicked")
         performSegueWithIdentifier("LogIn", sender: self)
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
 }
 

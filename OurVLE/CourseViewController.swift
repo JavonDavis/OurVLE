@@ -36,7 +36,7 @@ class CourseViewController: UITableViewController {
         
         let course = courses[indexPath.row]
         
-        cell.courseTitleLabel.text = course.shortname
+        cell.courseTitleLabel.text = course.shortname + " - " + course.fullname
         
         return cell
     }
@@ -70,8 +70,8 @@ class CourseViewController: UITableViewController {
         let course4 = Course()
         course4.shortname = "COMP1161"
         course4.id = 5
-        course4.fullname = "Introduction to object Oriented Programming"
-        course4.summary = "Course will introduce you to the fundamentals of Object oriented Programming"
+        course4.fullname = "Introduction to Object Oriented Programming"
+        course4.summary = "Course will introduce you to the fundamentals of 'Object Oriented Programming'"
       
         courses += [course,course1,course2,course3,course4]
     }
