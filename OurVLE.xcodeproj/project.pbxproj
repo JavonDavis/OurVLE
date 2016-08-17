@@ -29,6 +29,8 @@
 		8A2F61D31D53123B00FDDD47 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F61D21D53123B00FDDD47 /* Models.swift */; };
 		8A81CDCE1D532D7300D358E1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8A81CDCD1D532D7300D358E1 /* Podfile */; };
 		8AC09BF31D4DE44000C33585 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */; };
+		8AFFB6D51D64DEAC009BCD9C /* DiscussionPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFB6D41D64DEAC009BCD9C /* DiscussionPostTableViewController.swift */; };
+		8AFFB6D71D64DF19009BCD9C /* DiscussionPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFB6D61D64DF19009BCD9C /* DiscussionPostTableViewCell.swift */; };
 		A03BA5CCB6109B9BC441AB5B /* Pods_OurVLE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FDE55762E4B092BB2444B9 /* Pods_OurVLE.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +83,8 @@
 		8A2F61D21D53123B00FDDD47 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		8A81CDCD1D532D7300D358E1 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		8AFFB6D41D64DEAC009BCD9C /* DiscussionPostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionPostTableViewController.swift; sourceTree = "<group>"; };
+		8AFFB6D61D64DF19009BCD9C /* DiscussionPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionPostTableViewCell.swift; sourceTree = "<group>"; };
 		94C44487E5DB1EBD42CCA5F6 /* Pods-OurVLE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurVLE.release.xcconfig"; path = "Pods/Target Support Files/Pods-OurVLE/Pods-OurVLE.release.xcconfig"; sourceTree = "<group>"; };
 		9DE1F035584812A900880F0C /* Pods-OurVLETests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurVLETests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OurVLETests/Pods-OurVLETests.release.xcconfig"; sourceTree = "<group>"; };
 		B4432F340BB63F4447F6BCAF /* Pods-OurVLE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurVLE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OurVLE/Pods-OurVLE.debug.xcconfig"; sourceTree = "<group>"; };
@@ -210,6 +214,8 @@
 				8A2F61C31D52A58B00FDDD47 /* ForumViewController.swift */,
 				8A2F61CC1D5305E500FDDD47 /* ForumTableViewCell.swift */,
 				8A086F0F1D61ADC300364BD0 /* ForumDiscussionTableViewController.swift */,
+				8AFFB6D41D64DEAC009BCD9C /* DiscussionPostTableViewController.swift */,
+				8AFFB6D61D64DF19009BCD9C /* DiscussionPostTableViewCell.swift */,
 			);
 			name = Forums;
 			sourceTree = "<group>";
@@ -504,12 +510,14 @@
 				8A086F101D61ADC300364BD0 /* ForumDiscussionTableViewController.swift in Sources */,
 				8A2F61D31D53123B00FDDD47 /* Models.swift in Sources */,
 				8A2F61CD1D5305E500FDDD47 /* ForumTableViewCell.swift in Sources */,
+				8AFFB6D51D64DEAC009BCD9C /* DiscussionPostTableViewController.swift in Sources */,
 				8A2F61C81D52FF4500FDDD47 /* CourseTableViewCell.swift in Sources */,
 				8A0DDA621D4D9F5E00ECDD76 /* OurVLE.xcdatamodeld in Sources */,
 				8A2F61CF1D5305FE00FDDD47 /* ProfileTableViewCell.swift in Sources */,
 				8AC09BF31D4DE44000C33585 /* UITextFieldExtension.swift in Sources */,
 				8A2F61C41D52A58B00FDDD47 /* ForumViewController.swift in Sources */,
 				8A0DDA5C1D4D9F5E00ECDD76 /* LoginViewController.swift in Sources */,
+				8AFFB6D71D64DF19009BCD9C /* DiscussionPostTableViewCell.swift in Sources */,
 				8A2F61C61D52A5AF00FDDD47 /* ProfileViewController.swift in Sources */,
 				8A2F61C11D52A4B400FDDD47 /* CourseViewController.swift in Sources */,
 				8A086F0E1D61AD9100364BD0 /* CourseParticipantsTableViewController.swift in Sources */,

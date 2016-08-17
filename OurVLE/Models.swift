@@ -184,6 +184,7 @@ class Forum: NSObject, NSCoding, Mappable {
     var course: String!
     var name: String!
     var intro: String!
+    var numdiscussions: Int!
     
     override init() {
         // initialise vars here
@@ -199,6 +200,7 @@ class Forum: NSObject, NSCoding, Mappable {
         course <- map["course"]
         name <- map["name"]
         intro <- map["intro"]
+        numdiscussions <- map["numdiscussions"]
     }
     
     required convenience init(coder decoder: NSCoder) {
@@ -209,7 +211,7 @@ class Forum: NSObject, NSCoding, Mappable {
         self.intro = decoder.decodeObjectForKey("intro") as! String
         
         self.id = decoder.decodeObjectForKey("id") as! Int
-        
+        self.numdiscussions = decoder.decodeObjectForKey("numdiscussions") as! Int
     }
     
     func encodeWithCoder(coder: NSCoder) {
@@ -218,6 +220,7 @@ class Forum: NSObject, NSCoding, Mappable {
         if let intro = intro { coder.encodeObject(intro, forKey: "intro") }
         
         if let id = id { coder.encodeObject(id, forKey: "id") }
+        if let numdiscussions = numdiscussions { coder.encodeObject(numdiscussions, forKey: "numdiscussions") }
         
     }
 }
