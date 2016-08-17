@@ -227,7 +227,8 @@ class CourseSection: NSObject, NSCoding, Mappable {
     var id: Int!
     
     var name: String!
-    var summary:String!
+    var summary: String!
+    var modules: [CourseModule]!
     
     override init() {
         // initialise vars
@@ -242,6 +243,7 @@ class CourseSection: NSObject, NSCoding, Mappable {
         
         name <- map["name"]
         summary <- map["summary"]
+        modules <- map["modules"]
     }
     
     required convenience init(coder decoder: NSCoder) {
@@ -251,6 +253,7 @@ class CourseSection: NSObject, NSCoding, Mappable {
         self.summary = decoder.decodeObjectForKey("summary") as! String
         
         self.id = decoder.decodeObjectForKey("id") as! Int
+        self.modules = decoder.decodeObjectForKey("modules") as! [CourseModule]
         
     }
     
@@ -259,6 +262,7 @@ class CourseSection: NSObject, NSCoding, Mappable {
         if let summary = summary { coder.encodeObject(summary, forKey: "summary") }
         
         if let id = id { coder.encodeObject(id, forKey: "id") }
+        if let modules = modules { coder.encodeObject(modules, forKey: "modules") }
         
     }
     
@@ -273,6 +277,7 @@ class CourseModule: NSObject, NSCoding, Mappable {
     var moduleDescription: String!
     var modname: String!
     var sectionid: String!
+    var contents: [CourseModuleContent]!
     
     override init() {
         // initialise vars
@@ -290,6 +295,7 @@ class CourseModule: NSObject, NSCoding, Mappable {
         moduleDescription <- map["description"]
         modname <- map["modname"]
         sectionid <- map["sectionid"]
+        contents <- map["courseModuleContent"]
     }
     
     required convenience init(coder decoder: NSCoder) {
@@ -301,7 +307,7 @@ class CourseModule: NSObject, NSCoding, Mappable {
         self.modname = decoder.decodeObjectForKey("modname") as! String
         self.sectionid = decoder.decodeObjectForKey("sectionid") as! String
         self.id = decoder.decodeObjectForKey("id") as! Int
-        
+        self.contents = decoder.decodeObjectForKey("contents") as! [CourseModuleContent]
     }
     
     func encodeWithCoder(coder: NSCoder) {
@@ -312,7 +318,68 @@ class CourseModule: NSObject, NSCoding, Mappable {
         if let sectionid = sectionid { coder.encodeObject(sectionid, forKey: "sectionid") }
         
         if let id = id { coder.encodeObject(id, forKey: "id") }
+        if let contents = contents { coder.encodeObject(contents, forKey: "contents") }
+    }
+}
+
+class CourseModuleContent: NSObject, NSCoding, Mappable {
+    var type: String!
+    var filename: String!
+    var filesize: Int!
+    var fileurl: String!
+    var content: String!
+    var timecreated: Int!
+    var timemodified: Int!
+    var userid: Int!
+    var author: String!
+    
+    override init() {
+        // initialise vars
+    }
+    
+    required init?(_ map: Map){
         
+    }
+    
+    func mapping(map: Map) {
+        type <- map["type"]
+        filename <- map["filename"]
+        filesize <- map["filesize"]
+        fileurl <- map["fileurl"]
+        content <- map["content"]
+        timecreated <- map["timecreated"]
+        timemodified <- map["timemodified"]
+        userid <- map["userid"]
+        author <- map["author"]
+    }
+    
+    required convenience init(coder decoder: NSCoder) {
+        self.init()
+        
+        self.type = decoder.decodeObjectForKey("type") as! String
+        self.filename = decoder.decodeObjectForKey("filename") as! String
+        self.filesize = decoder.decodeObjectForKey("filesize") as! Int
+        self.fileurl = decoder.decodeObjectForKey("fileurl") as! String
+        self.content = decoder.decodeObjectForKey("content") as! String
+        self.timecreated = decoder.decodeObjectForKey("timecreated") as! Int
+        self.timemodified = decoder.decodeObjectForKey("timemodified") as! Int
+        self.userid = decoder.decodeObjectForKey("userid") as! Int
+        self.author = decoder.decodeObjectForKey("author") as! String
+        
+    }
+    
+    func encodeWithCoder(coder: NSCoder) {
+        if let type = type { coder.encodeObject(type, forKey: "type") }
+        if let filename = filename { coder.encodeObject(filename, forKey: "filename") }
+        if let filesize = filesize { coder.encodeObject(filesize, forKey: "filesize") }
+        if let fileurl = fileurl { coder.encodeObject(fileurl, forKey: "fileurl") }
+        if let content = content { coder.encodeObject(content, forKey: "content") }
+        
+        if let timecreated = timecreated { coder.encodeObject(timecreated, forKey: "timecreated") }
+        if let timemodified = timemodified { coder.encodeObject(timemodified, forKey: "timemodified") }
+        if let userid = userid { coder.encodeObject(userid, forKey: "userid") }
+        
+        if let author = author { coder.encodeObject(author, forKey: "author") }
     }
 }
 
