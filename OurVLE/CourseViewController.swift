@@ -44,16 +44,16 @@ class CourseViewController: UITableViewController {
         
         selectedCourse = courses[indexPath.row]
         
-        performSegueWithIdentifier("Course", sender: self)
+        performSegueWithIdentifier("Resources", sender: self)
         
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "Course")
+        if(segue.identifier == "Resources")
         {
-            let vc = segue.destinationViewController as! CourseTabBarController
-            vc.course = selectedCourse
+//            let vc = segue.destinationViewController as! CourseTabBarController
+//            vc.course = selectedCourse
         }
     }
     

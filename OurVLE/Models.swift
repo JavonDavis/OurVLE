@@ -263,3 +263,56 @@ class CourseSection: NSObject, NSCoding, Mappable {
     }
     
 }
+
+class CourseModule: NSObject, NSCoding, Mappable {
+    
+    var id: Int!
+    
+    var name: String!
+    var url: String!
+    var moduleDescription: String!
+    var modname: String!
+    var sectionid: String!
+    
+    override init() {
+        // initialise vars
+    }
+    
+    required init?(_ map: Map){
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        
+        name <- map["name"]
+        url <- map["url"]
+        moduleDescription <- map["description"]
+        modname <- map["modname"]
+        sectionid <- map["sectionid"]
+    }
+    
+    required convenience init(coder decoder: NSCoder) {
+        self.init()
+        
+        self.name = decoder.decodeObjectForKey("name") as! String
+        self.url = decoder.decodeObjectForKey("url") as! String
+        self.moduleDescription = decoder.decodeObjectForKey("moduleDescription") as! String
+        self.modname = decoder.decodeObjectForKey("modname") as! String
+        self.sectionid = decoder.decodeObjectForKey("sectionid") as! String
+        self.id = decoder.decodeObjectForKey("id") as! Int
+        
+    }
+    
+    func encodeWithCoder(coder: NSCoder) {
+        if let name = name { coder.encodeObject(name, forKey: "fullname") }
+        if let url = url { coder.encodeObject(url, forKey: "url") }
+        if let moduleDescription = moduleDescription { coder.encodeObject(moduleDescription, forKey: "moduleDescription") }
+        if let modname = modname { coder.encodeObject(modname, forKey: "modname") }
+        if let sectionid = sectionid { coder.encodeObject(sectionid, forKey: "sectionid") }
+        
+        if let id = id { coder.encodeObject(id, forKey: "id") }
+        
+    }
+}
+
