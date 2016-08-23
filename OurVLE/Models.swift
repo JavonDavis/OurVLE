@@ -184,7 +184,6 @@ class Forum: NSObject, NSCoding, Mappable {
     var course: String!
     var name: String!
     var intro: String!
-    var numdiscussions: Int!
     
     override init() {
         // initialise vars here
@@ -200,7 +199,6 @@ class Forum: NSObject, NSCoding, Mappable {
         course <- map["course"]
         name <- map["name"]
         intro <- map["intro"]
-        numdiscussions <- map["numdiscussions"]
     }
     
     required convenience init(coder decoder: NSCoder) {
@@ -211,7 +209,6 @@ class Forum: NSObject, NSCoding, Mappable {
         self.intro = decoder.decodeObjectForKey("intro") as! String
         
         self.id = decoder.decodeObjectForKey("id") as! Int
-        self.numdiscussions = decoder.decodeObjectForKey("numdiscussions") as! Int
     }
     
     func encodeWithCoder(coder: NSCoder) {
@@ -220,8 +217,131 @@ class Forum: NSObject, NSCoding, Mappable {
         if let intro = intro { coder.encodeObject(intro, forKey: "intro") }
         
         if let id = id { coder.encodeObject(id, forKey: "id") }
-        if let numdiscussions = numdiscussions { coder.encodeObject(numdiscussions, forKey: "numdiscussions") }
         
+    }
+}
+
+class ForumDiscussion: NSObject, NSCoding, Mappable {
+    
+    var id: Int!
+    var name: String!
+    var timemodified: Int!
+    var firstpost: Int!
+    var firstuserfullname: String!
+    var firstuseremail: String!
+    var subject: String!
+    var numreplies: String!
+    
+    override init() {
+        // initialise vars here
+    }
+    
+    required init?(_ map: Map){
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        
+        name <- map["name"]
+        timemodified <- map["timemodified"]
+        firstpost <- map["firstpost"]
+        firstuserfullname <- map["firstuserfullname"]
+        firstuseremail <- map["firstuseremail"]
+        subject <- map["subject"]
+        numreplies <- map["numreplies"]
+    }
+    
+    required convenience init(coder decoder: NSCoder) {
+        self.init()
+        
+        self.id = decoder.decodeObjectForKey("id") as! Int
+        
+        self.name = decoder.decodeObjectForKey("name") as! String
+        self.timemodified = decoder.decodeObjectForKey("timemodified") as! Int
+        self.firstpost = decoder.decodeObjectForKey("firstpost") as! Int
+        self.firstuserfullname = decoder.decodeObjectForKey("firstuserfullname") as! String
+        self.firstuseremail = decoder.decodeObjectForKey("firstuseremail") as! String
+        self.subject = decoder.decodeObjectForKey("subject") as! String
+        self.numreplies = decoder.decodeObjectForKey("numreplies") as! String
+        
+    }
+    
+    func encodeWithCoder(coder: NSCoder) {
+       
+        if let id = id { coder.encodeObject(id, forKey: "id") }
+        
+        if let name = name { coder.encodeObject(name, forKey: "name") }
+        if let timemodified = timemodified { coder.encodeObject(timemodified, forKey: "timemodified") }
+        if let firstpost = firstpost { coder.encodeObject(firstpost, forKey: "firstpost") }
+        if let firstuserfullname = firstuserfullname { coder.encodeObject(firstuserfullname, forKey: "firstuserfullname") }
+        if let firstuseremail = firstuseremail { coder.encodeObject(firstuseremail, forKey: "firstuseremail") }
+        if let subject = subject { coder.encodeObject(subject, forKey: "subject") }
+        if let numreplies = numreplies { coder.encodeObject(numreplies, forKey: "numreplies") }
+    }
+}
+
+class DiscussionPost: NSObject, NSCoding, Mappable {
+    
+    var id: Int!
+    
+    var created: Int!
+    var modified: Int!
+    var subject: String!
+    var message: String!
+    var messageformat: Int! // 1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN
+    var children: [Int]!
+    var userfullname: String! // Full name of Author
+    
+    override init() {
+        // initialise vars here
+    }
+    
+    required init?(_ map: Map){
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        
+        userfullname <- map["userfullname"]
+        created <- map["created"]
+        modified <- map["modified"]
+        subject <- map["subject"]
+        message <- map["message"]
+        messageformat <- map["messageformat"]
+        
+        children <- map["children"]
+    }
+    
+    required convenience init(coder decoder: NSCoder) {
+        self.init()
+        
+        self.id = decoder.decodeObjectForKey("id") as! Int
+        
+        self.userfullname = decoder.decodeObjectForKey("userfullname") as! String
+        self.created = decoder.decodeObjectForKey("created") as! Int
+        self.modified = decoder.decodeObjectForKey("modified") as! Int
+        self.subject = decoder.decodeObjectForKey("subject") as! String
+        self.message = decoder.decodeObjectForKey("message") as! String
+        self.messageformat = decoder.decodeObjectForKey("messageformat") as! Int
+        
+        self.children = decoder.decodeObjectForKey("children") as! [Int]
+        
+    }
+    
+    func encodeWithCoder(coder: NSCoder) {
+        
+        if let id = id { coder.encodeObject(id, forKey: "id") }
+        
+        if let userfullname = userfullname { coder.encodeObject(userfullname, forKey: "userfullname") }
+        if let created = created { coder.encodeObject(created, forKey: "created") }
+        if let modified = modified { coder.encodeObject(modified, forKey: "modified") }
+        if let subject = subject { coder.encodeObject(subject, forKey: "subject") }
+        if let message = message { coder.encodeObject(message, forKey: "message") }
+        if let messageformat = messageformat { coder.encodeObject(messageformat, forKey: "messageformat") }
+        
+        if let children = children { coder.encodeObject(children, forKey: "children") }
     }
 }
 

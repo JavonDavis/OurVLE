@@ -11,6 +11,8 @@ import UIKit
 
 class DiscussionPostTableViewController: UITableViewController {
 
+    var posts = [DiscussionPost]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

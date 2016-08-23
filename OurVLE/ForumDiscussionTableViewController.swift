@@ -11,8 +11,24 @@ import UIKit
 
 class ForumDiscussionTableViewController: UITableViewController {
 
+    var discussions = [ForumDiscussion]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    func loadSampleDiscussions() {
+        
+        let discussion = ForumDiscussion()
+        
+        let discussion1 = ForumDiscussion()
+        
+        let discussion2 = ForumDiscussion()
+        
+        let discussion3 = ForumDiscussion()
+        
+        let discussion4 = ForumDiscussion()
         
     }
 }
