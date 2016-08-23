@@ -226,7 +226,6 @@ class ForumDiscussion: NSObject, NSCoding, Mappable {
     var id: Int!
     var name: String!
     var timemodified: Int!
-    var firstpost: Int!
     var firstuserfullname: String!
     var firstuseremail: String!
     var subject: String!
@@ -245,7 +244,6 @@ class ForumDiscussion: NSObject, NSCoding, Mappable {
         
         name <- map["name"]
         timemodified <- map["timemodified"]
-        firstpost <- map["firstpost"]
         firstuserfullname <- map["firstuserfullname"]
         firstuseremail <- map["firstuseremail"]
         subject <- map["subject"]
@@ -259,7 +257,6 @@ class ForumDiscussion: NSObject, NSCoding, Mappable {
         
         self.name = decoder.decodeObjectForKey("name") as! String
         self.timemodified = decoder.decodeObjectForKey("timemodified") as! Int
-        self.firstpost = decoder.decodeObjectForKey("firstpost") as! Int
         self.firstuserfullname = decoder.decodeObjectForKey("firstuserfullname") as! String
         self.firstuseremail = decoder.decodeObjectForKey("firstuseremail") as! String
         self.subject = decoder.decodeObjectForKey("subject") as! String
@@ -273,7 +270,6 @@ class ForumDiscussion: NSObject, NSCoding, Mappable {
         
         if let name = name { coder.encodeObject(name, forKey: "name") }
         if let timemodified = timemodified { coder.encodeObject(timemodified, forKey: "timemodified") }
-        if let firstpost = firstpost { coder.encodeObject(firstpost, forKey: "firstpost") }
         if let firstuserfullname = firstuserfullname { coder.encodeObject(firstuserfullname, forKey: "firstuserfullname") }
         if let firstuseremail = firstuseremail { coder.encodeObject(firstuseremail, forKey: "firstuseremail") }
         if let subject = subject { coder.encodeObject(subject, forKey: "subject") }
@@ -290,7 +286,6 @@ class DiscussionPost: NSObject, NSCoding, Mappable {
     var subject: String!
     var message: String!
     var messageformat: Int! // 1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN
-    var children: [Int]!
     var userfullname: String! // Full name of Author
     
     override init() {
@@ -311,7 +306,6 @@ class DiscussionPost: NSObject, NSCoding, Mappable {
         message <- map["message"]
         messageformat <- map["messageformat"]
         
-        children <- map["children"]
     }
     
     required convenience init(coder decoder: NSCoder) {
@@ -326,7 +320,6 @@ class DiscussionPost: NSObject, NSCoding, Mappable {
         self.message = decoder.decodeObjectForKey("message") as! String
         self.messageformat = decoder.decodeObjectForKey("messageformat") as! Int
         
-        self.children = decoder.decodeObjectForKey("children") as! [Int]
         
     }
     
@@ -341,7 +334,6 @@ class DiscussionPost: NSObject, NSCoding, Mappable {
         if let message = message { coder.encodeObject(message, forKey: "message") }
         if let messageformat = messageformat { coder.encodeObject(messageformat, forKey: "messageformat") }
         
-        if let children = children { coder.encodeObject(children, forKey: "children") }
     }
 }
 

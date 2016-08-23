@@ -15,20 +15,81 @@ class ForumDiscussionTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadSampleDiscussions()
         
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return discussions.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellIdentifier = "ForumDiscussions"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+        
+        let discussion = discussions[indexPath.row]
+        
+        let numreplies = Int(discussion.numreplies)! + 1
+    
+        
+        if numreplies == 1 {
+            cell.textLabel?.text = discussion.subject + "(1 post)"
+        }
+        else {
+            cell.textLabel?.text = discussion.subject + "(\(numreplies) posts)"
+        }
+        
+        cell.detailTextLabel?.text = "Started By \(discussion.firstuserfullname)"
+        
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let discussion = discussions[indexPath.row]
+        
+        print("selected: \(discussion.subject)")
+        
+        performSegueWithIdentifier("DiscussionPosts", sender: self)
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     func loadSampleDiscussions() {
         
         let discussion = ForumDiscussion()
+        discussion.id = 0
+        discussion.subject = "Grades"
+        discussion.firstuserfullname = "Javon Davis"
+        discussion.numreplies = "0"
         
         let discussion1 = ForumDiscussion()
+        discussion1.id = 1
+        discussion1.subject = "Important"
+        discussion1.firstuserfullname = "Busby"
+        discussion1.numreplies = "4"
         
         let discussion2 = ForumDiscussion()
+        discussion2.id = 2
+        discussion2.subject = "Exams"
+        discussion2.firstuserfullname = "Ferguson"
+        discussion2.numreplies = "156"
         
         let discussion3 = ForumDiscussion()
+        discussion3.id = 3
+        discussion3.subject = "Meeting"
+        discussion3.firstuserfullname = "Bruce"
+        discussion3.numreplies = "10"
         
         let discussion4 = ForumDiscussion()
+        discussion4.id = 4
+        discussion4.subject = "Assignments"
+        discussion4.firstuserfullname = "Javon Davis"
+        discussion4.numreplies = "0"
         
+        discussions += [discussion, discussion1, discussion2, discussion3, discussion4]
     }
 }

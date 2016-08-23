@@ -13,6 +13,7 @@ class ForumViewController: UITableViewController {
     
     var forums = [Forum]()
     var courses = [Course]()
+    var selectedForum:Forum!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,14 @@ class ForumViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let course = courses[indexPath.section]
+        let courseForums = forums.filter({ Int($0.course) == course.id })
+        selectedForum = courseForums[indexPath.row]
+        
+        print("Selected : \(selectedForum.name)")
+        
+        performSegueWithIdentifier("Discussions", sender: self)
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
