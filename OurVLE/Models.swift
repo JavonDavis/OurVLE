@@ -11,30 +11,6 @@ import ObjectMapper
 // Would use structs instead of class but data needs to be persisted as NSData
 
 
-// MARK: Moodle API Constants
-let SERVICE_MOODLE_MOBILE = "moodle_mobile_app"
-let API_HOST = "http://ourvle.mona.uwi.edu/"
-let RESPONSE_FORMAT = "json"
-let LOGIN_URL = API_HOST + "login/token.php"
-let WEB_SERVICE = "/webservice/rest/server.php"
-
-let PARAM_USERNAME = "username"
-let PARAM_PASSWORD = "password"
-let PARAM_TOKEN = "wstoken"
-let PARAM_FUNCTION = "wsfunction"
-let PARAM_FORMAT = "moodlewsrestformat"
-
-
-// MARK: Moodle Functions
-let FUNCTION_GET_USER_COURSES = "moodle_enrol_get_users_courses"
-let FUNCTION_GET_COURSE_CONTENTS = "core_course_get_contents"
-let FUNCTION_GET_FORUMS = "mod_forum_get_forums_by_courses"
-let FUNCTION_GET_DISCUSSIONS = "mod_forum_get_forum_discussions"
-let FUNCTION_GET_POSTS = "mod_forum_get_forum_discussion_posts"
-let FUNCTION_GET_SITE_INFO = "moodle_webservice_get_siteinfo"
-let FUNCTION_GET_USERS_FROM_COURSE = "moodle_user_get_users_by_courseid"
-
-
 // MARK: SiteInfo
 class SiteInfo: NSObject, NSCoding, Mappable {
     var sitename: String!

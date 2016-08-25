@@ -9,27 +9,35 @@
 import Foundation
 import UIKit
 
-class CourseViewController: UITableViewController {
+class CourseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var loadingIndicator: NSLayoutConstraint!
+    @IBOutlet var tableView: UITableView!
     
     var courses = [Course]()
     var selectedCourse:Course!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         loadSampleCourses()
+        //self.tableView.reloadData()
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         // Could section it by what group the user is in for a specific course
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return courses.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cellIdentifier = "CourseTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! CourseTableViewCell
         
@@ -40,7 +48,7 @@ class CourseViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         selectedCourse = courses[indexPath.row]
         
@@ -55,6 +63,11 @@ class CourseViewController: UITableViewController {
 //            let vc = segue.destinationViewController as! CourseTabBarController
 //            vc.course = selectedCourse
         }
+    }
+    
+    func loadCourses()
+    {
+        
     }
     
     func loadSampleCourses()
