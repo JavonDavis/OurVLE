@@ -19,6 +19,7 @@ struct APIConstants {
     
     static let PARAM_USERNAME = "username"
     static let PARAM_PASSWORD = "password"
+    static let PARAM_SERVICE = "service"
     static let PARAM_TOKEN = "wstoken"
     static let PARAM_FUNCTION = "wsfunction"
     static let PARAM_FORMAT = "moodlewsrestformat"

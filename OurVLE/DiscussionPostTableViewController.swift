@@ -9,16 +9,14 @@
 import Foundation
 import UIKit
 
-class DiscussionPostTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var tableView: UITableView!
-
+class DiscussionPostTableViewController: UITableViewController {
     var posts = [DiscussionPost]()
+    var discussion: ForumDiscussion!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         loadSamplePosts()
         
@@ -26,15 +24,15 @@ class DiscussionPostTableViewController: UIViewController, UITableViewDataSource
         tableView.estimatedRowHeight = 140
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "DiscussionPostTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! DiscussionPostTableViewCell
         
@@ -45,9 +43,17 @@ class DiscussionPostTableViewController: UIViewController, UITableViewDataSource
         
         return cell
     }
-    
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        return nil
+
+    func refresh(sender:AnyObject)
+    {
+        // Updating your data here...
+        let post = DiscussionPost()
+        post.userfullname = "Javon Davis2"
+        post.message = "Good Day All!"
+        
+        posts.append(post)
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
     
     func loadSamplePosts()

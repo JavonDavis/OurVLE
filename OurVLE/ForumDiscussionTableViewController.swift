@@ -9,30 +9,29 @@
 import Foundation
 import UIKit
 
-class ForumDiscussionTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var tableView: UITableView!
-
+class ForumDiscussionTableViewController: UITableViewController {
+    
     var discussions = [ForumDiscussion]()
+    var forum: Forum!
+    var discussion: ForumDiscussion!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         loadSampleDiscussions()
-        
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return discussions.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "ForumDiscussions"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
         
@@ -53,14 +52,35 @@ class ForumDiscussionTableViewController: UIViewController, UITableViewDataSourc
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let discussion = discussions[indexPath.row]
+        discussion = discussions[indexPath.row]
         
         print("selected: \(discussion.subject)")
         
         performSegueWithIdentifier("DiscussionPosts", sender: self)
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "DiscussionPosts" {
+            let vc = segue.destinationViewController as! DiscussionPostTableViewController
+            vc.discussion = discussion
+        }
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        // Updating your data here...
+        let discussion = ForumDiscussion()
+        discussion.id = 0
+        discussion.subject = "Grades2"
+        discussion.firstuserfullname = "Javon Davis2"
+        discussion.numreplies = "2"
+        
+        discussions.append(discussion)
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
     
     func loadSampleDiscussions() {

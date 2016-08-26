@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-class ForumViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var tableView: UITableView!
+class ForumViewController: UITableViewController {
     
     var forums = [Forum]()
     var courses = [Course]()
@@ -19,8 +18,7 @@ class ForumViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         loadSampleCourses()
         loadSampleForums()
@@ -29,22 +27,22 @@ class ForumViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.estimatedRowHeight = 140
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return courses.count
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return courses[section].shortname
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let course = courses[section]
         let courseForums = forums.filter({ Int($0.course) == course.id })
         return courseForums.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cellIdentifier = "ForumTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ForumTableViewCell
         
@@ -57,7 +55,7 @@ class ForumViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let course = courses[indexPath.section]
         let courseForums = forums.filter({ Int($0.course) == course.id })
@@ -67,6 +65,27 @@ class ForumViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         performSegueWithIdentifier("Discussions", sender: self)
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Discussions" {
+            let vc = segue.destinationViewController as! ForumDiscussionTableViewController
+            vc.forum = selectedForum
+        }
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        // Updating your data here...
+        let forum = Forum()
+        forum.name = "News forum"
+        forum.id = 9
+        forum.course = "2"
+        forum.intro = "General News and Announcements"
+        
+        forums.append(forum)
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
     
     func loadSampleCourses()

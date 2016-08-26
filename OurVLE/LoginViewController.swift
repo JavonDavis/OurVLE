@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import AlamofireObjectMapper
+import Alamofire
+import ObjectMapper
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, Helpers {
 
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -26,15 +29,15 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginClick(sender: AnyObject) {
         
-        // >IOS 6 will return nil when empty
-        guard let idNumber = idNumberField.text, password = passwordField.text else
-        {
+        guard connectedToInternet else {
+            self.presentViewController(self.showAlert(NO_INTERNET), animated: true, completion: nil)
             return
         }
         
-        // < IOS 7 will return ""
-        guard !idNumber.isEmpty && !password.isEmpty else
-        {
+        // > IOS 6 will return nil when empty and < IOS 7 will return ""
+        guard let idNumber = idNumberField.text, password = passwordField.text where !idNumber.isEmpty && !password.isEmpty else {
+            let message = "Please enter a username and a password."
+            self.presentViewController(self.showAlert(message), animated: true, completion: nil)
             return
         }
         
@@ -66,9 +69,28 @@ class LoginViewController: UIViewController {
     
     func validateCredentials(id idNumber: String, password: String)
     {
-        // send login request
+        let params = [APIConstants.PARAM_USERNAME: idNumber, APIConstants.PARAM_PASSWORD: password, APIConstants.PARAM_SERVICE: APIConstants.SERVICE_MOODLE_MOBILE]
+        Alamofire.request(.GET, APIConstants.LOGIN_URL, parameters: params).responseObject { (response: Response<Token, NSError>) in
+            
+            guard let token = response.result.value else {
+                let message = "The app had an error trying to Log In. Please try again later"
+                self.presentViewController(self.showAlert(message), animated: true, completion: nil)
+                self.loginUnsuccessful()
+                return
+            }
 
-        loginSuccessful("token")
+            if let error = token.error {
+                self.presentViewController(self.showAlert(error), animated: true, completion: nil)
+                self.loginUnsuccessful()
+            }
+            else {
+                print(token.token)
+                self.loginSuccessful(token.token)
+            }
+            
+        }
+
+        
     }
     
 }

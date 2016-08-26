@@ -9,10 +9,7 @@
 import Foundation
 import UIKit
 
-class CourseViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    @IBOutlet weak var loadingIndicator: NSLayoutConstraint!
-    @IBOutlet var tableView: UITableView!
+class CourseViewController: UITableViewController {
     
     var courses = [Course]()
     var selectedCourse:Course!
@@ -20,24 +17,23 @@ class CourseViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         loadSampleCourses()
         //self.tableView.reloadData()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         // Could section it by what group the user is in for a specific course
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return courses.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cellIdentifier = "CourseTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! CourseTableViewCell
         
@@ -48,7 +44,7 @@ class CourseViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         selectedCourse = courses[indexPath.row]
         
@@ -60,14 +56,28 @@ class CourseViewController: UIViewController, UITableViewDataSource, UITableView
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "Resources")
         {
-//            let vc = segue.destinationViewController as! CourseTabBarController
-//            vc.course = selectedCourse
+            let vc = segue.destinationViewController as! CourseResourcesTableViewController
+            vc.course = selectedCourse
         }
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        // Updating your data here...
+        let course = Course()
+        course.shortname = "MATH1141"
+        course.id = 1
+        course.fullname = "Introduction to Linear Algebra"
+        course.summary = "Course will introduce you to the fundamentals of linear algebra"
+        
+        courses.append(course)
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
     
     func loadCourses()
     {
-        
+        // Send request for courses
     }
     
     func loadSampleCourses()

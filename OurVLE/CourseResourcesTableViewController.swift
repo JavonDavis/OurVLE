@@ -9,40 +9,37 @@
 import Foundation
 import UIKit
 
-class CourseResourcesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    
-    @IBOutlet weak var tableView: UITableView!
-
+class CourseResourcesTableViewController: UITableViewController {
+   
     var courseSections = [CourseSection]()
+    var course:Course!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        print(course.fullname)
+        self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         loadSampleCourseSections()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return courseSections.count
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let courseSection = courseSections[section]
         return courseSection.name
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let courseSection = courseSections[section]
         let courseModules = courseSection.modules
         
         return courseModules.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "ResourcesTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
         
@@ -52,15 +49,20 @@ class CourseResourcesTableViewController: UIViewController, UITableViewDataSourc
         
         print("\(indexPath.section) - \(indexPath.row)")
         
+        cell.textLabel?.text = courseModule.name
+        
+        guard courseModule.contents != nil && courseModule.contents.count > 0 else {
+            cell.detailTextLabel?.text = ""
+            return cell
+        }
         let moduleContent = courseModule.contents[0] // For OurVLE it's very rare for a module to have more than a single piece of content attached
         
-        cell.textLabel?.text = courseModule.name
         cell.detailTextLabel?.text = "Uploaded by: \(moduleContent.author)"
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let moduleSection = courseSections[indexPath.section]
         let courseModules = moduleSection.modules
@@ -68,6 +70,18 @@ class CourseResourcesTableViewController: UIViewController, UITableViewDataSourc
         
         print("\(module.name) clicked")
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        // Updating your data here...
+        let module1 = CourseModule()
+        module1.id = 9
+        module1.name = "Module 9"
+        
+        courseSections[0].modules.append(module1)
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
     
     func loadSampleCourseSections()

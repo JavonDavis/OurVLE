@@ -10,7 +10,6 @@
 		021FA745A5ECE1519563B41F /* Pods_OurVLEUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E97009C306F3946FA1D628 /* Pods_OurVLEUITests.framework */; };
 		51CE9CCC85D38C02217D8FF2 /* Pods_OurVLETests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138FF9BA656C5B052473085E /* Pods_OurVLETests.framework */; };
 		8A086F0A1D61AC6700364BD0 /* CourseResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A086F091D61AC6700364BD0 /* CourseResourcesTableViewController.swift */; };
-		8A086F0E1D61AD9100364BD0 /* CourseParticipantsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A086F0D1D61AD9100364BD0 /* CourseParticipantsTableViewController.swift */; };
 		8A086F101D61ADC300364BD0 /* ForumDiscussionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A086F0F1D61ADC300364BD0 /* ForumDiscussionTableViewController.swift */; };
 		8A0DDA5A1D4D9F5E00ECDD76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DDA591D4D9F5E00ECDD76 /* AppDelegate.swift */; };
 		8A0DDA5C1D4D9F5E00ECDD76 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0DDA5B1D4D9F5E00ECDD76 /* LoginViewController.swift */; };
@@ -29,6 +28,7 @@
 		8A2F61D31D53123B00FDDD47 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F61D21D53123B00FDDD47 /* Models.swift */; };
 		8A81CDCE1D532D7300D358E1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8A81CDCD1D532D7300D358E1 /* Podfile */; };
 		8A8B5C321D6CA7E400D581DF /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8B5C311D6CA7E400D581DF /* APIConstants.swift */; };
+		8A8B5C341D702DAD00D581DF /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8B5C331D702DAD00D581DF /* Helpers.swift */; };
 		8AC09BF31D4DE44000C33585 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */; };
 		8AFFB6D51D64DEAC009BCD9C /* DiscussionPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFB6D41D64DEAC009BCD9C /* DiscussionPostTableViewController.swift */; };
 		8AFFB6D71D64DF19009BCD9C /* DiscussionPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFB6D61D64DF19009BCD9C /* DiscussionPostTableViewCell.swift */; };
@@ -59,7 +59,6 @@
 		64E664A03FA25E5195394B17 /* Pods-OurVLETests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurVLETests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OurVLETests/Pods-OurVLETests.debug.xcconfig"; sourceTree = "<group>"; };
 		86E97009C306F3946FA1D628 /* Pods_OurVLEUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurVLEUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A086F091D61AC6700364BD0 /* CourseResourcesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseResourcesTableViewController.swift; sourceTree = "<group>"; };
-		8A086F0D1D61AD9100364BD0 /* CourseParticipantsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseParticipantsTableViewController.swift; sourceTree = "<group>"; };
 		8A086F0F1D61ADC300364BD0 /* ForumDiscussionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForumDiscussionTableViewController.swift; sourceTree = "<group>"; };
 		8A0DDA561D4D9F5E00ECDD76 /* OurVLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurVLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0DDA591D4D9F5E00ECDD76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		8A2F61D21D53123B00FDDD47 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		8A81CDCD1D532D7300D358E1 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8A8B5C311D6CA7E400D581DF /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		8A8B5C331D702DAD00D581DF /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		8AFFB6D41D64DEAC009BCD9C /* DiscussionPostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionPostTableViewController.swift; sourceTree = "<group>"; };
 		8AFFB6D61D64DF19009BCD9C /* DiscussionPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionPostTableViewCell.swift; sourceTree = "<group>"; };
@@ -163,6 +163,7 @@
 				8A2F61C21D52A51F00FDDD47 /* Login */,
 				8A2F61D21D53123B00FDDD47 /* Models.swift */,
 				8A8B5C311D6CA7E400D581DF /* APIConstants.swift */,
+				8A8B5C331D702DAD00D581DF /* Helpers.swift */,
 				8A0DDA591D4D9F5E00ECDD76 /* AppDelegate.swift */,
 				8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */,
 				8A0DDA5D1D4D9F5E00ECDD76 /* Main.storyboard */,
@@ -206,7 +207,6 @@
 				8A2F61C01D52A4B400FDDD47 /* CourseViewController.swift */,
 				8A2F61C71D52FF4500FDDD47 /* CourseTableViewCell.swift */,
 				8A086F091D61AC6700364BD0 /* CourseResourcesTableViewController.swift */,
-				8A086F0D1D61AD9100364BD0 /* CourseParticipantsTableViewController.swift */,
 			);
 			name = Course;
 			sourceTree = "<group>";
@@ -524,7 +524,7 @@
 				8AFFB6D71D64DF19009BCD9C /* DiscussionPostTableViewCell.swift in Sources */,
 				8A2F61C61D52A5AF00FDDD47 /* ProfileViewController.swift in Sources */,
 				8A2F61C11D52A4B400FDDD47 /* CourseViewController.swift in Sources */,
-				8A086F0E1D61AD9100364BD0 /* CourseParticipantsTableViewController.swift in Sources */,
+				8A8B5C341D702DAD00D581DF /* Helpers.swift in Sources */,
 				8A0DDA5A1D4D9F5E00ECDD76 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
