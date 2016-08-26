@@ -386,7 +386,7 @@ class CourseModule: NSObject, NSCoding, Mappable {
         moduleDescription <- map["description"]
         modname <- map["modname"]
         sectionid <- map["sectionid"]
-        contents <- map["courseModuleContent"]
+        contents <- map["contents"]
     }
     
     required convenience init(coder decoder: NSCoder) {

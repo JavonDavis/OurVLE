@@ -55,12 +55,12 @@ class CourseResourcesTableViewController: UITableViewController, MoodleHelpers {
         
         cell.textLabel?.text = courseModule.name
         
-        guard courseModule.contents != nil && courseModule.contents.count > 0 else {
+        let moduleContent = courseModule.contents[0] // For OurVLE it's very rare for a module to have more than a single piece of content attached
+        
+        guard let author = moduleContent.author where !author.isEmpty else {
             cell.detailTextLabel?.text = ""
             return cell
         }
-        let moduleContent = courseModule.contents[0] // For OurVLE it's very rare for a module to have more than a single piece of content attached
-        
         cell.detailTextLabel?.text = "Uploaded by: \(moduleContent.author)"
         
         return cell
@@ -68,6 +68,7 @@ class CourseResourcesTableViewController: UITableViewController, MoodleHelpers {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        print("\(indexPath.section)")
         let moduleSection = courseSections[indexPath.section]
         let courseModules = moduleSection.modules
         let module = courseModules[indexPath.row]
@@ -104,7 +105,23 @@ class CourseResourcesTableViewController: UITableViewController, MoodleHelpers {
             }
             
             print(courseSectionArray.count)
-            self.courseSections.appendContentsOf(courseSectionArray)
+            let x = courseSectionArray.map({ courseSection -> CourseSection in
+                
+                guard let modules = courseSection.modules else {
+                    return courseSection
+                }
+                courseSection.modules = modules.filter({ courseModule -> Bool in
+                    
+                    guard let contents = courseModule.contents where contents.count > 0 else {
+                        return false
+                    }
+                    
+                    return !contents[0].fileurl.isEmpty
+                
+                })
+                return courseSection
+            })
+            self.courseSections.appendContentsOf(x)
             
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
