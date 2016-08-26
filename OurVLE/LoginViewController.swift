@@ -11,7 +11,7 @@ import AlamofireObjectMapper
 import Alamofire
 import ObjectMapper
 
-class LoginViewController: UIViewController, Helpers {
+class LoginViewController: UIViewController, MoodleHelpers {
 
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -69,23 +69,40 @@ class LoginViewController: UIViewController, Helpers {
     
     func validateCredentials(id idNumber: String, password: String)
     {
-        let params = [APIConstants.PARAM_USERNAME: idNumber, APIConstants.PARAM_PASSWORD: password, APIConstants.PARAM_SERVICE: APIConstants.SERVICE_MOODLE_MOBILE]
-        Alamofire.request(.GET, APIConstants.LOGIN_URL, parameters: params).responseObject { (response: Response<Token, NSError>) in
+        var params = [PARAM_USERNAME: idNumber, PARAM_PASSWORD: password, PARAM_SERVICE: SERVICE_MOODLE_MOBILE]
+        Alamofire.request(.GET, LOGIN_URL, parameters: params).responseObject { (response: Response<Token, NSError>) in
             
-            guard let token = response.result.value else {
-                let message = "The app had an error trying to Log In. Please try again later"
+            guard let tokenObject = response.result.value else {
+                let message = "The app had an error trying to Log In. Please try again later."
                 self.presentViewController(self.showAlert(message), animated: true, completion: nil)
                 self.loginUnsuccessful()
                 return
             }
 
-            if let error = token.error {
+            if let error = tokenObject.error {
                 self.presentViewController(self.showAlert(error), animated: true, completion: nil)
                 self.loginUnsuccessful()
             }
             else {
-                print(token.token)
-                self.loginSuccessful(token.token)
+                print(tokenObject.token)
+                self.token(tokenObject.token)
+                params = self.params()
+                params[self.PARAM_FUNCTION]  = self.FUNCTION_GET_SITE_INFO
+                
+                Alamofire.request(.GET, self.WEB_SERVICE, parameters: params).responseObject { (response: Response<SiteInfo, NSError>) in
+                    
+                    guard let siteInfoObject = response.result.value else {
+                        let message = "The app had an error trying to Load the Information from OurVLE. Please try again later."
+                        self.presentViewController(self.showAlert(message), animated: true, completion: nil)
+                        self.loginUnsuccessful()
+                        return
+                    }
+                    print(siteInfoObject.fullname)
+                    
+                    self.siteInfo(siteInfoObject)
+                    
+                    self.loginSuccessful(tokenObject.token)
+                }
             }
             
         }

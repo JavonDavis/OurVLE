@@ -8,8 +8,11 @@
 
 import Foundation
 import UIKit
+import AlamofireObjectMapper
+import Alamofire
+import ObjectMapper
 
-class CourseViewController: UITableViewController {
+class CourseViewController: UITableViewController, MoodleHelpers {
     
     var courses = [Course]()
     var selectedCourse:Course!
@@ -18,8 +21,8 @@ class CourseViewController: UITableViewController {
         super.viewDidLoad()
         
         self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        
-        loadSampleCourses()
+        self.refreshControl?.beginRefreshing()
+        loadCourses()
         //self.tableView.reloadData()
     }
     
@@ -63,21 +66,36 @@ class CourseViewController: UITableViewController {
     
     func refresh(sender:AnyObject)
     {
-        // Updating your data here...
-        let course = Course()
-        course.shortname = "MATH1141"
-        course.id = 1
-        course.fullname = "Introduction to Linear Algebra"
-        course.summary = "Course will introduce you to the fundamentals of linear algebra"
+        guard connectedToInternet else {
+            self.presentViewController(self.showAlert(NO_INTERNET), animated: true, completion: nil)
+            self.refreshControl?.endRefreshing()
+            return
+        }
         
-        courses.append(course)
-        self.tableView.reloadData()
-        self.refreshControl?.endRefreshing()
+        courses.removeAll()
+        loadCourses()
     }
     
     func loadCourses()
     {
-        // Send request for courses
+        var params = self.params()
+        params[self.PARAM_FUNCTION] = self.FUNCTION_GET_USER_COURSES
+        params[self.PARAM_USERID] = String(self.siteInfo().userid)
+        Alamofire.request(.GET, self.WEB_SERVICE, parameters: params).responseArray { (response: Response<[Course], NSError>) in
+            
+            guard let courseArray = response.result.value else {
+                let message = "Error loading Courses"
+                self.presentViewController(self.showAlert(message), animated: true, completion: nil)
+                self.refreshControl?.endRefreshing()
+                return
+            }
+            
+            print(courseArray.count)
+            self.courses.appendContentsOf(courseArray)
+            
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     func loadSampleCourses()
@@ -113,5 +131,6 @@ class CourseViewController: UITableViewController {
         course4.summary = "Course will introduce you to the fundamentals of 'Object Oriented Programming'"
       
         courses += [course,course1,course2,course3,course4]
+        self.refreshControl?.endRefreshing()
     }
 }
