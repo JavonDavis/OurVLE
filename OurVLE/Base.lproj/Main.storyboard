@@ -121,7 +121,6 @@
         <!--Courses-->
         <scene sceneID="xnK-eQ-uba">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7dH-jg-rjM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="jyh-Pa-RiG" userLabel="Courses" customClass="CourseViewController" customModule="OurVLE" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="BQB-S3-wHl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -162,7 +161,7 @@
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="5ac-hf-ad1">
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle">
-                            <fragment content="Refreshing Courses">
+                            <fragment content="Loading Courses">
                                 <attributes>
                                     <font key="NSFont" metaFont="smallSystem"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -174,13 +173,13 @@
                         <segue destination="Q1o-7z-X3b" kind="show" identifier="Resources" id="hmz-Ow-PEy"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7dH-jg-rjM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1835" y="-28"/>
         </scene>
         <!--Course Resources-->
         <scene sceneID="hCg-rv-ehd">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zeX-yy-10S" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="Q1o-7z-X3b" userLabel="Course Resources" customClass="CourseResourcesTableViewController" customModule="OurVLE" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="CzA-NP-BgH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -220,7 +219,7 @@
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Mk8-1X-Avc">
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle">
-                            <fragment content="Refreshing Course Contents">
+                            <fragment content="Loading Course Contents">
                                 <attributes>
                                     <font key="NSFont" metaFont="smallSystem"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -229,13 +228,13 @@
                         </attributedString>
                     </refreshControl>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zeX-yy-10S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2551" y="-28"/>
         </scene>
         <!--Forums-->
         <scene sceneID="aTz-gr-19q">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SUz-k5-vfl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="LPM-1Q-3bU" userLabel="Forums" customClass="ForumViewController" customModule="OurVLE" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="pn8-yy-npS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -299,13 +298,13 @@
                         <segue destination="5w3-0M-eEC" kind="show" identifier="Discussions" id="yg5-Oa-pb9"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SUz-k5-vfl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1835" y="917"/>
         </scene>
         <!--Forum Discussion Table View Controller-->
         <scene sceneID="dEV-m3-5pU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UDd-kv-ted" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="5w3-0M-eEC" customClass="ForumDiscussionTableViewController" customModule="OurVLE" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZLK-jl-Iiq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -345,7 +344,7 @@
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="7pj-Et-yfc">
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle">
-                            <fragment content="Refreshing Discussions">
+                            <fragment content="Loading Discussions">
                                 <attributes>
                                     <font key="NSFont" metaFont="smallSystem"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -357,6 +356,7 @@
                         <segue destination="66t-Wd-2kc" kind="show" identifier="DiscussionPosts" id="Yqu-QQ-rOR"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UDd-kv-ted" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2551" y="917"/>
         </scene>
@@ -448,7 +448,6 @@
         <!--Courses-->
         <scene sceneID="iJl-Yx-Vee">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jkx-RU-ahR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OXI-pP-fEw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Courses" image="courseTabIcon" id="i8i-er-80i"/>
                     <toolbarItems/>
@@ -461,13 +460,13 @@
                         <segue destination="jyh-Pa-RiG" kind="relationship" relationship="rootViewController" id="upS-S0-VDR"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jkx-RU-ahR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1091" y="-28"/>
         </scene>
         <!--Forums-->
         <scene sceneID="CMO-KJ-4tz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KaF-sx-GOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="66t-Wd-2kc" userLabel="Forums" customClass="DiscussionPostTableViewController" customModule="OurVLE" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="asc-ha-TBd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -520,7 +519,7 @@
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="5az-9x-r0O">
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle">
-                            <fragment content="Refreshing Posts">
+                            <fragment content="Loading Posts">
                                 <attributes>
                                     <font key="NSFont" metaFont="smallSystem"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -529,6 +528,7 @@
                         </attributedString>
                     </refreshControl>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KaF-sx-GOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3260" y="917"/>
         </scene>

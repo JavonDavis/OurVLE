@@ -8,8 +8,11 @@
 
 import Foundation
 import UIKit
+import AlamofireObjectMapper
+import Alamofire
+import ObjectMapper
 
-class CourseResourcesTableViewController: UITableViewController {
+class CourseResourcesTableViewController: UITableViewController, MoodleHelpers {
    
     var courseSections = [CourseSection]()
     var course:Course!
@@ -19,8 +22,9 @@ class CourseResourcesTableViewController: UITableViewController {
         
         print(course.fullname)
         self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.beginRefreshing()
         
-        loadSampleCourseSections()
+        loadCourseSections()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -74,14 +78,37 @@ class CourseResourcesTableViewController: UITableViewController {
     
     func refresh(sender:AnyObject)
     {
-        // Updating your data here...
-        let module1 = CourseModule()
-        module1.id = 9
-        module1.name = "Module 9"
+        guard connectedToInternet else {
+            self.presentViewController(self.showAlert(NO_INTERNET), animated: true, completion: nil)
+            self.refreshControl?.endRefreshing()
+            return
+        }
         
-        courseSections[0].modules.append(module1)
-        self.tableView.reloadData()
-        self.refreshControl?.endRefreshing()
+        courseSections.removeAll()
+        
+        loadCourseSections()
+    }
+    
+    func loadCourseSections() {
+        var params = self.params()
+        params[self.PARAM_FUNCTION] = self.FUNCTION_GET_COURSE_CONTENTS
+        params[self.PARAM_COURSEID] = String(course.id)
+        
+        Alamofire.request(.GET, self.WEB_SERVICE, parameters: params).responseArray { (response: Response<[CourseSection], NSError>) in
+            
+            guard let courseSectionArray = response.result.value else {
+                let message = "Error loading resources for \(self.course.fullname)."
+                self.presentViewController(self.showAlert(message), animated: true, completion: nil)
+                self.refreshControl?.endRefreshing()
+                return
+            }
+            
+            print(courseSectionArray.count)
+            self.courseSections.appendContentsOf(courseSectionArray)
+            
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     func loadSampleCourseSections()

@@ -26,6 +26,7 @@ protocol MoodleHelpers {
     var PARAM_FUNCTION: String { get }
     var PARAM_FORMAT: String { get }
     var PARAM_USERID: String { get }
+    var PARAM_COURSEID: String { get }
     
     
     // MARK: Moodle Functions
@@ -50,6 +51,7 @@ protocol MoodleHelpers {
 
 extension MoodleHelpers {
     
+    // Define computed properties
     var SERVICE_MOODLE_MOBILE: String { return "moodle_mobile_app" }
     var API_HOST: String { return "http://ourvle.mona.uwi.edu/" }
     var RESPONSE_FORMAT: String { return "json" }
@@ -63,6 +65,7 @@ extension MoodleHelpers {
     var PARAM_FUNCTION: String { return "wsfunction" }
     var PARAM_FORMAT: String { return "moodlewsrestformat" }
     var PARAM_USERID: String { return "userid" }
+    var PARAM_COURSEID: String { return "courseid" }
     
     var FUNCTION_GET_USER_COURSES: String { return "moodle_enrol_get_users_courses" }
     var FUNCTION_GET_COURSE_CONTENTS: String { return "core_course_get_contents" }
@@ -107,7 +110,7 @@ extension MoodleHelpers {
         return alertController
     }
     
-    // Token and Site Info Helpers
+    // Token and Site Info Helpers(Getters and Setters)
     func token() -> String {
         return APIConstants.token
     }

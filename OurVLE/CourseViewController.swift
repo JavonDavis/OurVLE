@@ -23,11 +23,9 @@ class CourseViewController: UITableViewController, MoodleHelpers {
         self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl?.beginRefreshing()
         loadCourses()
-        //self.tableView.reloadData()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         // Could section it by what group the user is in for a specific course
         return 1
     }
