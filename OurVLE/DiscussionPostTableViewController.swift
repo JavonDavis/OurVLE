@@ -8,8 +8,11 @@
 
 import Foundation
 import UIKit
+import AlamofireObjectMapper
+import Alamofire
+import ObjectMapper
 
-class DiscussionPostTableViewController: UITableViewController {
+class DiscussionPostTableViewController: UITableViewController, MoodleHelpers {
     var posts = [DiscussionPost]()
     var discussion: ForumDiscussion!
     
@@ -18,7 +21,8 @@ class DiscussionPostTableViewController: UITableViewController {
         
         self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
-        loadSamplePosts()
+        self.refreshControl?.beginRefreshing()
+        loadPosts()
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
@@ -46,14 +50,35 @@ class DiscussionPostTableViewController: UITableViewController {
 
     func refresh(sender:AnyObject)
     {
-        // Updating your data here...
-        let post = DiscussionPost()
-        post.userfullname = "Javon Davis2"
-        post.message = "Good Day All!"
+        guard connectedToInternet else {
+            self.presentViewController(self.showAlert(NO_INTERNET), animated: true, completion: nil)
+            self.refreshControl?.endRefreshing()
+            return
+        }
         
-        posts.append(post)
-        self.tableView.reloadData()
-        self.refreshControl?.endRefreshing()
+        posts.removeAll()
+        loadPosts()
+    }
+    
+    func loadPosts() {
+        var params = self.params()
+        params[self.PARAM_FUNCTION] = self.FUNCTION_GET_POSTS
+        params["discussionid"] = String(discussion.id)
+        
+        Alamofire.request(.GET, self.WEB_SERVICE, parameters: params).responseArray(keyPath: "posts") { (response: Response<[DiscussionPost], NSError>) in
+            
+            guard let DiscussionPostArray = response.result.value else {
+                let message = "Error loading Posts"
+                self.presentViewController(self.showAlert(message), animated: true, completion: nil)
+                self.refreshControl?.endRefreshing()
+                return
+            }
+            
+            self.posts.appendContentsOf(DiscussionPostArray)
+            
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     func loadSamplePosts()

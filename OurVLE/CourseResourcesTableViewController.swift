@@ -68,6 +68,11 @@ class CourseResourcesTableViewController: UITableViewController, MoodleHelpers {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        guard !(self.refreshControl?.refreshing)! else {
+            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            return
+        }
+        
         print("\(indexPath.section)")
         let moduleSection = courseSections[indexPath.section]
         let courseModules = moduleSection.modules
@@ -105,10 +110,13 @@ class CourseResourcesTableViewController: UITableViewController, MoodleHelpers {
             }
             
             print(courseSectionArray.count)
-            let x = courseSectionArray.map({ courseSection -> CourseSection in
+            
+            // Valid Section defined as a non empty section whose modules have been validated. 26/8/2016 Javon Davis
+            // To validate a Section is to ensure that all modules that have it's first file content being non empty. 26/8/2016 Javon Davis
+            let validSections = courseSectionArray.filter({ courseSection -> Bool in
                 
                 guard let modules = courseSection.modules else {
-                    return courseSection
+                    return false
                 }
                 courseSection.modules = modules.filter({ courseModule -> Bool in
                     
@@ -119,9 +127,9 @@ class CourseResourcesTableViewController: UITableViewController, MoodleHelpers {
                     return !contents[0].fileurl.isEmpty
                 
                 })
-                return courseSection
+                return !modules.isEmpty
             })
-            self.courseSections.appendContentsOf(x)
+            self.courseSections.appendContentsOf(validSections)
             
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()

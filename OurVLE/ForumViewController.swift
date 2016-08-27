@@ -8,8 +8,11 @@
 
 import Foundation
 import UIKit
+import AlamofireObjectMapper
+import Alamofire
+import ObjectMapper
 
-class ForumViewController: UITableViewController {
+class ForumViewController: UITableViewController, MoodleHelpers {
     
     var forums = [Forum]()
     var courses = [Course]()
@@ -20,8 +23,8 @@ class ForumViewController: UITableViewController {
         
         self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
-        loadSampleCourses()
-        loadSampleForums()
+        self.refreshControl?.beginRefreshing()
+        loadForums()
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
@@ -57,6 +60,10 @@ class ForumViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        guard !(self.refreshControl?.refreshing)! else {
+            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            return
+        }
         let course = courses[indexPath.section]
         let courseForums = forums.filter({ Int($0.course) == course.id })
         selectedForum = courseForums[indexPath.row]
@@ -77,15 +84,59 @@ class ForumViewController: UITableViewController {
     func refresh(sender:AnyObject)
     {
         // Updating your data here...
-        let forum = Forum()
-        forum.name = "News forum"
-        forum.id = 9
-        forum.course = "2"
-        forum.intro = "General News and Announcements"
+        guard connectedToInternet else {
+            self.presentViewController(self.showAlert(NO_INTERNET), animated: true, completion: nil)
+            self.refreshControl?.endRefreshing()
+            return
+        }
         
-        forums.append(forum)
-        self.tableView.reloadData()
-        self.refreshControl?.endRefreshing()
+        courses.removeAll()
+        forums.removeAll()
+        loadForums()
+    }
+    
+    func loadForums() {
+        var params = self.params()
+        params[self.PARAM_FUNCTION] = self.FUNCTION_GET_USER_COURSES
+        params[self.PARAM_USERID] = String(self.siteInfo().userid)
+        Alamofire.request(.GET, self.WEB_SERVICE, parameters: params).responseArray { (response: Response<[Course], NSError>) in
+            
+            guard let courseArray = response.result.value else {
+                let message = "Error loading Courses for Forums"
+                self.presentViewController(self.showAlert(message), animated: true, completion: nil)
+                self.refreshControl?.endRefreshing()
+                return
+            }
+            
+            print(courseArray.count)
+            self.courses.appendContentsOf(courseArray)
+            
+            var ids = courseArray.map({ $0.id })
+            
+            params = self.params()
+            params[self.PARAM_FUNCTION] = self.FUNCTION_GET_FORUMS
+            
+            for index in 0...ids.count-1 {
+                params["courseids[\(index)]"] = "\(ids[index])"
+            }
+            
+            Alamofire.request(.GET, self.WEB_SERVICE, parameters: params).responseArray { (response: Response<[Forum], NSError>) in
+                
+                print(response.result.value)
+                
+                guard let forumArray = response.result.value else {
+                    let message = "Error loading Forums"
+                    self.presentViewController(self.showAlert(message), animated: true, completion: nil)
+                    self.refreshControl?.endRefreshing()
+                    return
+                }
+                
+                self.forums.appendContentsOf(forumArray)
+                
+                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+            }
+        }
     }
     
     func loadSampleCourses()

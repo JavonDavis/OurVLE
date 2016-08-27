@@ -46,6 +46,10 @@ class CourseViewController: UITableViewController, MoodleHelpers {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        guard !(self.refreshControl?.refreshing)! else {
+            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            return
+        }
         
         selectedCourse = courses[indexPath.row]
         

@@ -8,8 +8,11 @@
 
 import Foundation
 import UIKit
+import AlamofireObjectMapper
+import Alamofire
+import ObjectMapper
 
-class ForumDiscussionTableViewController: UITableViewController {
+class ForumDiscussionTableViewController: UITableViewController, MoodleHelpers {
     
     var discussions = [ForumDiscussion]()
     var forum: Forum!
@@ -20,7 +23,11 @@ class ForumDiscussionTableViewController: UITableViewController {
         
         self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
-        loadSampleDiscussions()
+        self.refreshControl?.beginRefreshing()
+        loadDiscussions()
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -33,26 +40,32 @@ class ForumDiscussionTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "ForumDiscussions"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! DiscussionTableViewCell
         
         let discussion = discussions[indexPath.row]
         
         let numreplies = Int(discussion.numreplies)! + 1
     
+        cell.discussionTitleLabel.text = discussion.subject
         
         if numreplies == 1 {
-            cell.textLabel?.text = discussion.subject + "(1 post)"
+            cell.postCountLabel.text = "1 post"
         }
         else {
-            cell.textLabel?.text = discussion.subject + "(\(numreplies) posts)"
+            cell.postCountLabel.text = "\(numreplies) posts"
         }
         
-        cell.detailTextLabel?.text = "Started By \(discussion.firstuserfullname)"
+        cell.discussionDetailLabel.text = "\(discussion.firstuserfullname) on "
         
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        guard !(self.refreshControl?.refreshing)! else {
+            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            return
+        }
         
         discussion = discussions[indexPath.row]
         
@@ -71,16 +84,35 @@ class ForumDiscussionTableViewController: UITableViewController {
     
     func refresh(sender:AnyObject)
     {
-        // Updating your data here...
-        let discussion = ForumDiscussion()
-        discussion.id = 0
-        discussion.subject = "Grades2"
-        discussion.firstuserfullname = "Javon Davis2"
-        discussion.numreplies = "2"
+        guard connectedToInternet else {
+            self.presentViewController(self.showAlert(NO_INTERNET), animated: true, completion: nil)
+            self.refreshControl?.endRefreshing()
+            return
+        }
         
-        discussions.append(discussion)
-        self.tableView.reloadData()
-        self.refreshControl?.endRefreshing()
+        discussions.removeAll()
+        loadDiscussions()
+    }
+    
+    func loadDiscussions() {
+        var params = self.params()
+        params[self.PARAM_FUNCTION] = self.FUNCTION_GET_DISCUSSIONS
+        params["forumids[0]"] = String(forum.id)
+        
+        Alamofire.request(.GET, self.WEB_SERVICE, parameters: params).responseArray { (response: Response<[ForumDiscussion], NSError>) in
+            
+            guard let forumDiscussionArray = response.result.value else {
+                let message = "Error loading Discussion"
+                self.presentViewController(self.showAlert(message), animated: true, completion: nil)
+                self.refreshControl?.endRefreshing()
+                return
+            }
+            
+            self.discussions.appendContentsOf(forumDiscussionArray)
+            
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }
     }
     
     func loadSampleDiscussions() {
