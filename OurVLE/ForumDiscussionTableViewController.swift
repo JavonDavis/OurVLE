@@ -90,7 +90,6 @@ class ForumDiscussionTableViewController: UITableViewController, MoodleHelpers {
             return
         }
         
-        discussions.removeAll()
         loadDiscussions()
     }
     
@@ -108,6 +107,7 @@ class ForumDiscussionTableViewController: UITableViewController, MoodleHelpers {
                 return
             }
             
+            self.discussions.removeAll()
             self.discussions.appendContentsOf(forumDiscussionArray)
             
             self.tableView.reloadData()

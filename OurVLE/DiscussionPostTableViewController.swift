@@ -43,7 +43,13 @@ class DiscussionPostTableViewController: UITableViewController, MoodleHelpers {
         let post = posts[indexPath.row]
         
         cell.postAuthorLabel.text = post.userfullname
-        cell.postContentLabel.text = post.message
+        
+        if post.messageformat == 0 || post.messageformat == 1  {
+           cell.postContentLabel.text = post.message.html2String
+        }
+        else {
+            cell.postContentLabel.text = post.message
+        }
         
         return cell
     }
@@ -56,7 +62,6 @@ class DiscussionPostTableViewController: UITableViewController, MoodleHelpers {
             return
         }
         
-        posts.removeAll()
         loadPosts()
     }
     
@@ -74,6 +79,7 @@ class DiscussionPostTableViewController: UITableViewController, MoodleHelpers {
                 return
             }
             
+            self.posts.removeAll()
             self.posts.appendContentsOf(DiscussionPostArray)
             
             self.tableView.reloadData()

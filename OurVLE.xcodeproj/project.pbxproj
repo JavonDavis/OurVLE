@@ -29,6 +29,7 @@
 		8A81CDCE1D532D7300D358E1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8A81CDCD1D532D7300D358E1 /* Podfile */; };
 		8A8B5C341D702DAD00D581DF /* MoodleHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8B5C331D702DAD00D581DF /* MoodleHelpers.swift */; };
 		8A8B5C361D70E50200D581DF /* DiscussionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8B5C351D70E50100D581DF /* DiscussionTableViewCell.swift */; };
+		8A8B5C381D71720000D581DF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8B5C371D71720000D581DF /* WebViewController.swift */; };
 		8AC09BF31D4DE44000C33585 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */; };
 		8AFFB6D51D64DEAC009BCD9C /* DiscussionPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFB6D41D64DEAC009BCD9C /* DiscussionPostTableViewController.swift */; };
 		8AFFB6D71D64DF19009BCD9C /* DiscussionPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFFB6D61D64DF19009BCD9C /* DiscussionPostTableViewCell.swift */; };
@@ -84,6 +85,7 @@
 		8A81CDCD1D532D7300D358E1 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8A8B5C331D702DAD00D581DF /* MoodleHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodleHelpers.swift; sourceTree = "<group>"; };
 		8A8B5C351D70E50100D581DF /* DiscussionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionTableViewCell.swift; sourceTree = "<group>"; };
+		8A8B5C371D71720000D581DF /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		8AC09BF21D4DE44000C33585 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		8AFFB6D41D64DEAC009BCD9C /* DiscussionPostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionPostTableViewController.swift; sourceTree = "<group>"; };
 		8AFFB6D61D64DF19009BCD9C /* DiscussionPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscussionPostTableViewCell.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				8A2F61C01D52A4B400FDDD47 /* CourseViewController.swift */,
 				8A2F61C71D52FF4500FDDD47 /* CourseTableViewCell.swift */,
 				8A086F091D61AC6700364BD0 /* CourseResourcesTableViewController.swift */,
+				8A8B5C371D71720000D581DF /* WebViewController.swift */,
 			);
 			name = Course;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A086F0A1D61AC6700364BD0 /* CourseResourcesTableViewController.swift in Sources */,
+				8A8B5C381D71720000D581DF /* WebViewController.swift in Sources */,
 				8A086F101D61ADC300364BD0 /* ForumDiscussionTableViewController.swift in Sources */,
 				8A2F61D31D53123B00FDDD47 /* Models.swift in Sources */,
 				8A2F61CD1D5305E500FDDD47 /* ForumTableViewCell.swift in Sources */,

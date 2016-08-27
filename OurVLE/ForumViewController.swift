@@ -54,7 +54,13 @@ class ForumViewController: UITableViewController, MoodleHelpers {
         let forum = courseForums[indexPath.row]
         
         cell.forumTitleLabel.text = forum.name
-        cell.forumIntroLabel.text = forum.intro
+        
+        if forum.introformat == 1 || forum.introformat == 0 { // HTML format
+            cell.forumIntroLabel.text = forum.intro.html2String
+        }
+        else {
+            cell.forumIntroLabel.text = forum.intro
+        }
         return cell
     }
     
@@ -90,8 +96,6 @@ class ForumViewController: UITableViewController, MoodleHelpers {
             return
         }
         
-        courses.removeAll()
-        forums.removeAll()
         loadForums()
     }
     
@@ -109,6 +113,8 @@ class ForumViewController: UITableViewController, MoodleHelpers {
             }
             
             print(courseArray.count)
+            self.courses.removeAll()
+            self.forums.removeAll()
             self.courses.appendContentsOf(courseArray)
             
             var ids = courseArray.map({ $0.id })

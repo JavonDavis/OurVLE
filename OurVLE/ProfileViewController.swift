@@ -9,14 +9,13 @@
 import Foundation
 import UIKit
 
-class ProfileViewController: UITableViewController {
+class ProfileViewController: UITableViewController, MoodleHelpers {
     
-    var profile:SiteInfo = SiteInfo()
     var profileItems = [ProfileItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSampleProfileItems()
+        loadProfileItems()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -62,6 +61,16 @@ class ProfileViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
+    func loadProfileItems() {
+        
+        // TODO: Implement a proper profile page and make use of the user profile picture
+        let profileItem = ProfileItem(itemLabel: siteInfo().fullname)
+        let profileItem1 = ProfileItem(itemLabel: siteInfo().username)
+        let profileItem2 = ProfileItem(itemLabel: "Log Out", functionToExecute: logOut)
+        
+        profileItems += [profileItem,profileItem1,profileItem2]
+    }
+    
     func loadSampleProfileItems() {
         
         let profileItem = ProfileItem(itemLabel: "Javon Davis")
@@ -86,11 +95,10 @@ struct ProfileItem {
     let function: (() -> ())?
     
     init(itemLabel label:String) {
-        self.label = label
-        self.function = nil
+        self.init(itemLabel: label, functionToExecute: nil)
     }
     
-    init(itemLabel label:String, functionToExecute function: () -> ()) {
+    init(itemLabel label:String, functionToExecute function: (() -> ())?) {
         self.label = label
         self.function = function
     }

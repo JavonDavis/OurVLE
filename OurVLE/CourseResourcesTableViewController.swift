@@ -16,6 +16,8 @@ class CourseResourcesTableViewController: UITableViewController, MoodleHelpers {
    
     var courseSections = [CourseSection]()
     var course:Course!
+    var localPath: NSURL?
+    var selectedContent: CourseModuleContent!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,9 +79,19 @@ class CourseResourcesTableViewController: UITableViewController, MoodleHelpers {
         let moduleSection = courseSections[indexPath.section]
         let courseModules = moduleSection.modules
         let module = courseModules[indexPath.row]
+        let content = module.contents[0]
+        selectedContent = content
         
         print("\(module.name) clicked")
+        self.performSegueWithIdentifier("ShowFile", sender: self)
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowFile" {
+            let vc = segue.destinationViewController as! WebViewController
+            vc.url = NSURL(string: selectedContent.fileurl + "&token="+token())
+        }
     }
     
     func refresh(sender:AnyObject)
@@ -89,8 +101,6 @@ class CourseResourcesTableViewController: UITableViewController, MoodleHelpers {
             self.refreshControl?.endRefreshing()
             return
         }
-        
-        courseSections.removeAll()
         
         loadCourseSections()
     }
@@ -110,7 +120,7 @@ class CourseResourcesTableViewController: UITableViewController, MoodleHelpers {
             }
             
             print(courseSectionArray.count)
-            
+            self.courseSections.removeAll()
             // Valid Section defined as a non empty section whose modules have been validated. 26/8/2016 Javon Davis
             // To validate a Section is to ensure that all modules that have it's first file content being non empty. 26/8/2016 Javon Davis
             let validSections = courseSectionArray.filter({ courseSection -> Bool in

@@ -160,6 +160,7 @@ class Forum: NSObject, NSCoding, Mappable {
     var course: String!
     var name: String!
     var intro: String!
+    var introformat: Int! // intro format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
     
     override init() {
         // initialise vars here
@@ -175,6 +176,7 @@ class Forum: NSObject, NSCoding, Mappable {
         course <- map["course"]
         name <- map["name"]
         intro <- map["intro"]
+        introformat <- map["introformat"]
     }
     
     required convenience init(coder decoder: NSCoder) {
@@ -183,6 +185,7 @@ class Forum: NSObject, NSCoding, Mappable {
         self.course = decoder.decodeObjectForKey("course") as! String
         self.name = decoder.decodeObjectForKey("name") as! String
         self.intro = decoder.decodeObjectForKey("intro") as! String
+        self.introformat = decoder.decodeObjectForKey("introformat") as! Int
         
         self.id = decoder.decodeObjectForKey("id") as! Int
     }
@@ -191,6 +194,7 @@ class Forum: NSObject, NSCoding, Mappable {
         if let course = course { coder.encodeObject(course, forKey: "course") }
         if let name = name { coder.encodeObject(name, forKey: "fullname") }
         if let intro = intro { coder.encodeObject(intro, forKey: "intro") }
+        if let introformat = introformat { coder.encodeObject(introformat, forKey: "introformat") }
         
         if let id = id { coder.encodeObject(id, forKey: "id") }
         

@@ -74,7 +74,6 @@ class CourseViewController: UITableViewController, MoodleHelpers {
             return
         }
         
-        courses.removeAll()
         loadCourses()
     }
     
@@ -93,6 +92,7 @@ class CourseViewController: UITableViewController, MoodleHelpers {
             }
             
             print(courseArray.count)
+            self.courses.removeAll()
             self.courses.appendContentsOf(courseArray)
             
             self.tableView.reloadData()
