@@ -21,7 +21,7 @@ class ForumDiscussionTableViewController: UITableViewController, MoodleHelpers {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(ForumDiscussionTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         self.refreshControl?.beginRefreshing()
         loadDiscussions()
@@ -55,7 +55,7 @@ class ForumDiscussionTableViewController: UITableViewController, MoodleHelpers {
             cell.postCountLabel.text = "\(numreplies) posts"
         }
         
-        cell.discussionDetailLabel.text = "\(discussion.firstuserfullname) on "
+        cell.discussionDetailLabel.text = "Posted by \(discussion.firstuserfullname)"
         
         return cell
     }

@@ -19,7 +19,7 @@ class DiscussionPostTableViewController: UITableViewController, MoodleHelpers {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(DiscussionPostTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         self.refreshControl?.beginRefreshing()
         loadPosts()

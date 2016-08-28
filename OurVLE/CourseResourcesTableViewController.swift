@@ -23,7 +23,7 @@ class CourseResourcesTableViewController: UITableViewController, MoodleHelpers {
         super.viewDidLoad()
         
         print(course.fullname)
-        self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(CourseResourcesTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl?.beginRefreshing()
         
         loadCourseSections()

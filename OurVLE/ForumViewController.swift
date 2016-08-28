@@ -21,7 +21,7 @@ class ForumViewController: UITableViewController, MoodleHelpers {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.refreshControl?.addTarget(self, action: #selector(CourseViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(ForumViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         self.refreshControl?.beginRefreshing()
         loadForums()
