@@ -217,6 +217,7 @@
                             <outlet property="delegate" destination="Q1o-7z-X3b" id="fIf-La-mZN"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="iIA-27-dBi"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Mk8-1X-Avc">
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle">
@@ -339,7 +340,7 @@
             </objects>
             <point key="canvasLocation" x="1835" y="917"/>
         </scene>
-        <!--Forum Discussion Table View Controller-->
+        <!--Discussions-->
         <scene sceneID="dEV-m3-5pU">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="5w3-0M-eEC" customClass="ForumDiscussionTableViewController" customModule="OurVLE" customModuleProvider="target" sceneMemberID="viewController">
@@ -403,6 +404,7 @@
                             <outlet property="delegate" destination="5w3-0M-eEC" id="xHA-LD-ezm"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Discussions" id="EiL-EE-NUl"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="7pj-Et-yfc">
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle">
@@ -585,7 +587,7 @@
                             <outlet property="delegate" destination="66t-Wd-2kc" id="IjH-8Q-n2Z"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Ke4-r8-ri2"/>
+                    <navigationItem key="navigationItem" title="Posts" id="Ke4-r8-ri2"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="5az-9x-r0O">
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle">

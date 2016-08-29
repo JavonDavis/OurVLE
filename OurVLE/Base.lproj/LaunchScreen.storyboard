@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,12 +17,34 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="JnN-tU-ehJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OurVLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5B6-T8-SdJ">
+                                <rect key="frame" x="229.5" y="275" width="141" height="50.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5B6-T8-SdJ" firstAttribute="centerY" secondItem="JnN-tU-ehJ" secondAttribute="centerY" id="5w8-Hk-nwQ"/>
+                            <constraint firstItem="JnN-tU-ehJ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="H1H-es-Vvj"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="JnN-tU-ehJ" secondAttribute="bottom" id="Scv-XQ-KMf"/>
+                            <constraint firstItem="5B6-T8-SdJ" firstAttribute="centerX" secondItem="JnN-tU-ehJ" secondAttribute="centerX" id="ZYc-un-DoW"/>
+                            <constraint firstItem="JnN-tU-ehJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="cSU-bb-P34"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JnN-tU-ehJ" secondAttribute="trailing" constant="-20" id="pwi-nW-uIV"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="43" y="279"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LoginBackground" width="923" height="1646"/>
+    </resources>
 </document>
