@@ -1,8 +1,9 @@
-### OurVLE for IOS.
- OurVLE runs on the open source Moodle software and this app was built using Moodle API and any functions made available by the guys at MITS who made OurVLE. 
+# OurVLE for IOS
 
-### About the creator.
-As you might have seen by now my name is Javon Davis(@JA-VON). I am/was a student at the University of the West Indies(Graduating October 2016) where I received my B.Sc in Computer Science and a minor in Math. I love making apps and while I was at UWI I worked on an OurVLE Android for MITS. I've also worked on sites like [Loop](http://www.loopjamaica.com/) and the Jamaica Experiences [website](http://www.jamaicaexperiences.com/) and [iOS App](https://itunes.apple.com/jm/app/jamaica-experiences/id1060263506?mt=8) and I even made this little game called [Chatois](https://play.google.com/store/apps/details?id=com.chatois.app&hl=en) so check it out and feel free to let me know what you think. Anywho, thanks for reading and I hope the app was useful to you.
+OurVLE runs on the open source Moodle software and this app was built using Moodle API and any functions made available by the guys at MITS who made OurVLE. 
+
+### The Code 
+This is a Swift App, Swift 2.0 as of this commit and might be moving to Swift 3 as soon as I get that beta version of XCode 8(I've been procrastinating). I love Swift for IOS development mainly because of its simpler syntax compared to Objective-C and since I knew very little Objective-C. I appreciate the little time it took me to get used to Swift and I really felt like I was building an app in Python, Kudos to the guys at Apple, this is my first real app so please feel free to comment on where you think the code could be better and I'll definately look into it or go ahead and send in pull requests if you'd like. 
 
 ### Contributing
 This app was built upon open source software and it's only fitting that it itself is open source. I will make a sincere effort to open issues for features and ensure to assign a person to a feature only when that person is actively working on it. Feel free open any issues or bugs found in the app yourself and I'm especially encouraging students at the University to contribute to its development to improve the user experiences for all students at our school. Comment on an issue you'd like to work on and I'll assign it to you and send in the pull request once you think it's ready and I'll check it out and get it published to the app store. I'll also make sure to update any fields in the repository and on the app store to credit any contributors for their contributions.  
